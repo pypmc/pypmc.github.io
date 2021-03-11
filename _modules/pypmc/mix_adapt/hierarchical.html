@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pypmc.mix_adapt.hierarchical &mdash; pypmc 1.1.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> pypmc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#developer-notes">3. Developer notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide.html">4. User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">5. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">6. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">7. Reference Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pypmc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pypmc.mix_adapt.hierarchical</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pypmc.mix_adapt.hierarchical</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Hierarchical clustering as described in [GR04]_</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">linalg</span>
+
+<div class="viewcode-block" id="Hierarchical"><a class="viewcode-back" href="../../../api.html#pypmc.mix_adapt.hierarchical.Hierarchical">[docs]</a><span class="k">class</span> <span class="nc">Hierarchical</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Hierarchical clustering as described in [GR04]_.</span>
+
+<span class="sd">    Find a Gaussian mixture density :math:`g` with components</span>
+<span class="sd">    :math:`g_j` that most closely matches the Gaussian mixture density</span>
+<span class="sd">    specified by :math:`f` and its components :math:`f_i`, but with</span>
+<span class="sd">    less components. The algorithm is an iterative EM procedure</span>
+<span class="sd">    alternating between a *regroup* and a *refit* step, and requires</span>
+<span class="sd">    an ``initial_guess`` of the output density that defines the</span>
+<span class="sd">    maximum number of components to use.</span>
+
+<span class="sd">    :param input_components:</span>
+
+<span class="sd">        :py:class:`pypmc.density.mixture.MixtureDensity` with Gaussian</span>
+<span class="sd">        (:py:class:`pypmc.density.gauss.Gauss`) components; the Gaussian</span>
+<span class="sd">        mixture to be reduced.</span>
+
+<span class="sd">    :param initial_guess:</span>
+
+<span class="sd">        :py:class:`pypmc.density.mixture.MixtureDensity` with Gaussian</span>
+<span class="sd">        (:py:class:`pypmc.density.gauss.Gauss`) components; initial guess</span>
+<span class="sd">        for the EM algorithm.</span>
+
+<span class="sd">    .. seealso::</span>
+
+<span class="sd">        :py:func:`pypmc.density.mixture.create_gaussian_mixture`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_components</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">):</span>
+
+        <span class="c1"># read and verify component numbers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nin</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_components</span><span class="o">.</span><span class="n">components</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nout</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_guess</span><span class="o">.</span><span class="n">components</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">nin</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">nout</span><span class="p">,</span> <span class="s2">&quot;Got more output (</span><span class="si">%i</span><span class="s2">) than input (</span><span class="si">%i</span><span class="s2">) components&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nin</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">nout</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Invalid number of output components </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">nout</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">input_components</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">initial_guess</span><span class="p">)</span>
+
+        <span class="c1"># inverse map: several inputs can map to one output, so need list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nout</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># the i-th element is :math:`min_j KL(f_i || g_j)`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_kl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nin</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+    <span class="k">def</span> <span class="nf">_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kill</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Look for dead components (weight=0) and remove them</span>
+<span class="sd">        if enabled by ``kill``.</span>
+<span class="sd">        Resize storage. Recompute determinant and covariance.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">kill</span><span class="p">:</span>
+            <span class="n">removed_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">prune</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">nout</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">removed_indices</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="n">removed_indices</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Removing </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">removed_indices</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">removed_indices</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">j</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the distance function d(f,g,\pi), Eq. (3)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_kl</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_refit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update the map :math:`\pi` keeping the output :math:`g` fixed</span>
+
+<span class="sd">        Use Eq. (7) and below in [GR04]_</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># temporary variables for manipulation</span>
+        <span class="n">mu_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mu</span><span class="p">)</span>
+        <span class="n">sigma</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sigma</span><span class="p">)</span>
+        <span class="n">mean</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">mu_diff</span><span class="p">)</span>
+        <span class="n">cov</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">components</span><span class="p">):</span>
+            <span class="c1"># stop if inv_map is empty for j-th comp.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># (re-)initialize new mean/cov to zero</span>
+            <span class="n">mean</span><span class="p">[:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">cov</span><span class="p">[:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+            <span class="c1"># compute total weight and mean</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">mean</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mu</span>
+
+            <span class="c1"># rescale by total weight</span>
+            <span class="n">mean</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+
+            <span class="c1"># update covariance</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="c1"># mu_diff = mu&#39;_j - mu_i</span>
+                <span class="n">mu_diff</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">mean</span>
+                <span class="n">mu_diff</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mu</span>
+
+                <span class="c1"># sigma = (mu&#39;_j - mu_i) (mu&#39;_j - mu_i)^T</span>
+                <span class="n">sigma</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">mu_diff</span><span class="p">,</span> <span class="n">mu_diff</span><span class="p">)</span>
+
+                <span class="c1"># sigma += sigma_i</span>
+                <span class="n">sigma</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sigma</span>
+
+                <span class="c1"># multiply with alpha_i</span>
+                <span class="n">sigma</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+                <span class="c1"># sigma_j += alpha_i * (sigma_i + (mu&#39;_j - mu_i) (mu&#39;_j - mu_i)^T</span>
+                <span class="n">cov</span> <span class="o">+=</span> <span class="n">sigma</span>
+
+            <span class="c1"># 1 / beta_j</span>
+            <span class="n">cov</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+
+            <span class="c1"># update the Mixture</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_regroup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update the output :math:`g` keeping the map :math:`\pi` fixed.</span>
+<span class="sd">        Compute the KL between all input and output components.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># clean up old maps</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nout</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># find smallest divergence between input component i</span>
+        <span class="c1"># and output component j of the cluster mixture density</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nin</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_kl</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+            <span class="n">j_min</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nout</span><span class="p">):</span>
+                <span class="n">kl</span> <span class="o">=</span> <span class="n">kullback_leibler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">kl</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_kl</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">min_kl</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">kl</span>
+                    <span class="n">j_min</span> <span class="o">=</span> <span class="n">j</span>
+            <span class="k">assert</span> <span class="n">j_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inv_map</span><span class="p">[</span><span class="n">j_min</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Hierarchical.run"><a class="viewcode-back" href="../../../api.html#pypmc.mix_adapt.hierarchical.Hierarchical.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">kill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Perform the clustering on the input components updating the initial</span>
+<span class="sd">        guess. The result is available in the member ``self.g``.</span>
+
+<span class="sd">        Return the number of iterations at convergence, or None.</span>
+
+<span class="sd">        :param eps:</span>
+
+<span class="sd">            If relative change of distance between current and last step falls below ``eps``,</span>
+<span class="sd">            declare convergence:</span>
+
+<span class="sd">            .. math::</span>
+<span class="sd">                0 &lt; \frac{d^t - d^{t-1}}{d^t} &lt; \varepsilon</span>
+
+<span class="sd">        :param kill:</span>
+
+<span class="sd">             If a component is assigned zero weight (no input components), it is removed.</span>
+
+<span class="sd">        :param max_steps:</span>
+
+<span class="sd">             Perform a maximum number of update steps.</span>
+
+<span class="sd">        :param verbose:</span>
+
+<span class="sd">             Output information on progress of algorithm.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">old_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
+        <span class="n">new_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting hierarchical clustering with </span><span class="si">%d</span><span class="s1"> components.&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">components</span><span class="p">))</span>
+        <span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup</span><span class="p">(</span><span class="n">kill</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_regroup</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_refit</span><span class="p">()</span>
+
+            <span class="n">new_distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distance</span><span class="p">()</span>
+            <span class="k">assert</span> <span class="n">new_distance</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Found non-positive distance </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">new_distance</span>
+
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Distance in step </span><span class="si">%d</span><span class="s1">: </span><span class="si">%g</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">new_distance</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">new_distance</span> <span class="o">==</span> <span class="n">old_distance</span><span class="p">:</span>
+                <span class="n">converged</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exact minimum found after </span><span class="si">%d</span><span class="s1"> steps&#39;</span> <span class="o">%</span> <span class="n">step</span><span class="p">)</span>
+                <span class="k">break</span>
+
+            <span class="n">rel_change</span> <span class="o">=</span> <span class="p">(</span><span class="n">old_distance</span> <span class="o">-</span> <span class="n">new_distance</span><span class="p">)</span> <span class="o">/</span> <span class="n">old_distance</span>
+            <span class="k">assert</span> <span class="ow">not</span> <span class="p">(</span><span class="n">rel_change</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1e-13</span><span class="p">),</span> <span class="s1">&#39;distance increased&#39;</span>
+
+            <span class="k">if</span> <span class="n">rel_change</span> <span class="o">&lt;</span> <span class="n">eps</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">converged</span> <span class="ow">and</span> <span class="n">step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">converged</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="n">new_distance</span> <span class="o">!=</span> <span class="n">old_distance</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Close enough to local minimum after </span><span class="si">%d</span><span class="s1"> steps&#39;</span> <span class="o">%</span> <span class="n">step</span><span class="p">)</span>
+                <span class="k">break</span>
+
+            <span class="c1"># save distance for comparison in next step</span>
+            <span class="n">old_distance</span> <span class="o">=</span> <span class="n">new_distance</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup</span><span class="p">(</span><span class="n">kill</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> components remain.&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">components</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">converged</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">step</span></div></div>
+        <span class="c1"># else return None</span>
+
+<div class="viewcode-block" id="kullback_leibler"><a class="viewcode-back" href="../../../api.html#pypmc.mix_adapt.hierarchical.kullback_leibler">[docs]</a><span class="k">def</span> <span class="nf">kullback_leibler</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Kullback Leibler divergence of two Gaussians, :math:`KL(1||2)`&quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">log_det_sigma</span> <span class="o">-</span> <span class="n">c1</span><span class="o">.</span><span class="n">log_det_sigma</span>
+    <span class="n">d</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">c2</span><span class="o">.</span><span class="n">inv_sigma</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">sigma</span><span class="p">))</span>
+    <span class="n">mean_diff</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">mu</span> <span class="o">-</span> <span class="n">c2</span><span class="o">.</span><span class="n">mu</span>
+    <span class="n">d</span> <span class="o">+=</span> <span class="n">mean_diff</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c2</span><span class="o">.</span><span class="n">inv_sigma</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mean_diff</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">mu</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">d</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2014-2021, Frederik Beaujean and Stephan Jahn and others.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

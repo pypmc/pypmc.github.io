@@ -1,47 +1,208 @@
 
-<!DOCTYPE html>
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. User guide &#8212; pypmc 1.1.4 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>4. User guide &mdash; pypmc 1.1.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="5. Examples" href="examples.html" />
     <link rel="prev" title="2. Installation" href="installation.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="examples.html" title="5. Examples"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="installation.html" title="2. Installation"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pypmc 1.1.4 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>User guide</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pypmc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#developer-notes">3. Developer notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. User guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#densities">4.1. Densities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#component-density">4.1.1. Component density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mixture-density">4.1.2. Mixture density</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#indicator-function">4.2. Indicator function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#markov-chain">4.3. Markov chain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialization">4.3.1. Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adaptation">4.3.2. Adaptation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#importance-sampling">4.4. Importance sampling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#standard">4.4.1. Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deterministic-mixture">4.4.2. Deterministic mixture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison">4.4.3. Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pmc">4.5. PMC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-approach">4.5.1. Basic approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.5.2. Student’s t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pmc-with-multiple-em-steps">4.5.3. PMC with multiple EM steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#variational-bayes">4.6. Variational Bayes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classic-version">4.6.1. Classic version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">4.6.1.1. Initialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running">4.6.1.2. Running</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">4.6.1.3. Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mixture-reduction">4.7. Mixture reduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchical-clustering">4.7.1. Hierarchical clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vbmerge">4.7.2. VBmerge</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#putting-it-all-together">4.8. Putting it all together</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">5. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">6. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">7. Reference Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pypmc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">4. </span>User guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/user_guide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="user-guide">
 <h1><span class="section-number">4. </span>User guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
@@ -65,8 +226,8 @@ freedom <span class="math notranslate nohighlight">\(\nu_j\)</span> for <span cl
 <p>The two densities — Gauss and student’s t — supported by pypmc
 come in two variants whose methods have identical names but differ in
 their arguments. The standard classes are
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Gauss</span></code> and
-<code class="xref py py-class docutils literal notranslate"><span class="pre">StudentT</span></code>:</p>
+<a class="reference internal" href="api.html#pypmc.density.gauss.Gauss" title="pypmc.density.gauss.Gauss"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gauss</span></code></a> and
+<a class="reference internal" href="api.html#pypmc.density.student_t.StudentT" title="pypmc.density.student_t.StudentT"><code class="xref py py-class docutils literal notranslate"><span class="pre">StudentT</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.1</span><span class="p">,</span>  <span class="o">-</span><span class="mf">0.001</span><span class="p">],</span>
                     <span class="p">[</span><span class="o">-</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">]])</span>
@@ -83,8 +244,8 @@ their arguments. The standard classes are
 </div>
 <p>For the use as proposal densities in Markov chains (see below), there
 are also <em>local</em> variants whose mean can be varied in each call to
-<code class="docutils literal notranslate"><span class="pre">evaluate</span></code> or <code class="docutils literal notranslate"><span class="pre">propose</span></code>.  <code class="xref py py-class docutils literal notranslate"><span class="pre">LocalGauss</span></code>
-and <code class="xref py py-class docutils literal notranslate"><span class="pre">LocalStudentT</span></code> don’t take the
+<code class="docutils literal notranslate"><span class="pre">evaluate</span></code> or <code class="docutils literal notranslate"><span class="pre">propose</span></code>.  <a class="reference internal" href="api.html#pypmc.density.gauss.LocalGauss" title="pypmc.density.gauss.LocalGauss"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalGauss</span></code></a>
+and <a class="reference internal" href="api.html#pypmc.density.student_t.LocalStudentT" title="pypmc.density.student_t.LocalStudentT"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalStudentT</span></code></a> don’t take the
 <code class="docutils literal notranslate"><span class="pre">mean</span></code> argument in the constructor. To reproduce the previous
 results, one would do:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">local_gauss</span> <span class="o">=</span> <span class="n">pypmc</span><span class="o">.</span><span class="n">density</span><span class="o">.</span><span class="n">gauss</span><span class="o">.</span><span class="n">LocalGauss</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
@@ -96,7 +257,7 @@ results, one would do:</p>
 <div class="section" id="mixture-density">
 <h3><span class="section-number">4.1.2. </span>Mixture density<a class="headerlink" href="#mixture-density" title="Permalink to this headline">¶</a></h3>
 <p>Mixture densities are represented by
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code>. One can create a
+<a class="reference internal" href="api.html#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a>. One can create a
 mixture density from a list of arbitrary component densities and
 weights. However, usually all one needs are the convenience shortcuts
 to create mixtures of Gaussians and student’s from means and
@@ -133,9 +294,9 @@ discussed below. It is defined as</p>
 1,  x \in V \\
 0, {\rm else}
 \end{cases}\end{split}\]</div>
-<p>The <a class="reference internal" href="tools.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">indicator</span></code></a> module has provides indicator
-functions for a <a class="reference internal" href="tools.html#pypmc.tools.indicator.ball" title="pypmc.tools.indicator.ball"><code class="xref py py-func docutils literal notranslate"><span class="pre">ball</span></code></a> and a
-<a class="reference internal" href="tools.html#pypmc.tools.indicator.hyperrectangle" title="pypmc.tools.indicator.hyperrectangle"><code class="xref py py-func docutils literal notranslate"><span class="pre">hyperrectangle</span></code></a> in <span class="math notranslate nohighlight">\(D\)</span> dimensions.
+<p>The <a class="reference internal" href="api.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">indicator</span></code></a> module has provides indicator
+functions for a <a class="reference internal" href="api.html#pypmc.tools.indicator.ball" title="pypmc.tools.indicator.ball"><code class="xref py py-func docutils literal notranslate"><span class="pre">ball</span></code></a> and a
+<a class="reference internal" href="api.html#pypmc.tools.indicator.hyperrectangle" title="pypmc.tools.indicator.hyperrectangle"><code class="xref py py-func docutils literal notranslate"><span class="pre">hyperrectangle</span></code></a> in <span class="math notranslate nohighlight">\(D\)</span> dimensions.
 The indicator function can be merged with the (unbounded) target
 density such that the the wrapper calls the target density only if the
 parameter vector is in V and returns <span class="math notranslate nohighlight">\(\log(0)= -\infty\)</span> otherwise:</p>
@@ -158,7 +319,7 @@ parameter vector is in V and returns <span class="math notranslate nohighlight">
 <h3><span class="section-number">4.3.1. </span>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h3>
 <p>We provide a generic implementation of adaptive local-random-walk MCMC
 <a class="reference internal" href="references.html#hst01" id="id1"><span>[HST01]</span></a> featuring Gauss and student’s t local proposals. To create a
-<a class="reference internal" href="sampler.html#pypmc.sampler.markov_chain.MarkovChain" title="pypmc.sampler.markov_chain.MarkovChain"><code class="xref py py-class docutils literal notranslate"><span class="pre">MarkovChain</span></code></a>, one needs to be able to evaluate the target
+<a class="reference internal" href="api.html#pypmc.sampler.markov_chain.MarkovChain" title="pypmc.sampler.markov_chain.MarkovChain"><code class="xref py py-class docutils literal notranslate"><span class="pre">MarkovChain</span></code></a>, one needs to be able to evaluate the target
 density on the log scale, and then a local proposal density, and a valid
 initial point:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pypmc.density.student_t.LocalStudentT</span>
@@ -179,7 +340,7 @@ target’s covariance, but scaled to yield an acceptance rate in the
 range of 20%. For a Gaussian target and a Gaussian proposal in
 <span class="math notranslate nohighlight">\(D\)</span> dimensions, the scaling should be <span class="math notranslate nohighlight">\(2.38^2/D\)</span></p>
 <p>In order to constrain the support of the target in a simple way, one
-can pass an <a class="reference internal" href="tools.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-class docutils literal notranslate"><span class="pre">indicator</span></code></a> function to the
+can pass an <a class="reference internal" href="api.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-class docutils literal notranslate"><span class="pre">indicator</span></code></a> function to the
 constructor using the keyword argument <code class="docutils literal notranslate"><span class="pre">ind=indicator</span></code>. Then any
 proposed point is first checked to lie in the support; i.e.,
 <code class="docutils literal notranslate"><span class="pre">indicator(x)</span> <span class="pre">==</span> <span class="pre">True</span></code>. Only then is the target density called. This
@@ -217,7 +378,7 @@ can be set via
 <div class="section" id="standard">
 <h3><span class="section-number">4.4.1. </span>Standard<a class="headerlink" href="#standard" title="Permalink to this headline">¶</a></h3>
 <p>The standard
-<a class="reference internal" href="sampler.html#pypmc.sampler.importance_sampling.ImportanceSampler" title="pypmc.sampler.importance_sampling.ImportanceSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a>
+<a class="reference internal" href="api.html#pypmc.sampler.importance_sampling.ImportanceSampler" title="pypmc.sampler.importance_sampling.ImportanceSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a>
 implements serial importance sampling to compute the expectation of
 some function <span class="math notranslate nohighlight">\(f\)</span> under the target <span class="math notranslate nohighlight">\(P\)</span> as</p>
 <div class="math notranslate nohighlight" id="fundamental-is">
@@ -232,13 +393,13 @@ function that computes <span class="math notranslate nohighlight">\(log(P(x))\)<
 <span class="n">sampler</span> <span class="o">=</span> <span class="n">ImportanceSampler</span><span class="p">(</span><span class="n">log_target</span><span class="p">,</span> <span class="n">log_proposal</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Optionally, the <code class="docutils literal notranslate"><span class="pre">sampler</span></code> accepts an <a class="reference internal" href="tools.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-class docutils literal notranslate"><span class="pre">indicator</span></code></a>;
+<p>Optionally, the <code class="docutils literal notranslate"><span class="pre">sampler</span></code> accepts an <a class="reference internal" href="api.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-class docutils literal notranslate"><span class="pre">indicator</span></code></a>;
 see <a class="reference internal" href="#indicator"><span class="std std-ref">Indicator function</span></a>. What to do with <code class="docutils literal notranslate"><span class="pre">sampler</span></code>? Run it:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sampler</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>to draw 500 samples. If the proposal is a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code> and the option
+<a class="reference internal" href="api.html#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a> and the option
 <code class="docutils literal notranslate"><span class="pre">trace_sort=True</span></code>, then <code class="docutils literal notranslate"><span class="pre">run</span></code> returns the generating component for
 each sample.</p>
 <p>The samples and weights are stored in two
@@ -248,7 +409,7 @@ objects:</p>
 <span class="n">weights</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Note that a <a class="reference internal" href="tools.html#pypmc.tools.History" title="pypmc.tools.History"><code class="xref py py-class docutils literal notranslate"><span class="pre">History</span></code></a> object can contain the output
+<p>Note that a <a class="reference internal" href="api.html#pypmc.tools.History" title="pypmc.tools.History"><code class="xref py py-class docutils literal notranslate"><span class="pre">History</span></code></a> object can contain the output
 of several runs, the last one is available as <code class="docutils literal notranslate"><span class="pre">history[-1]</span></code>.</p>
 <p>The samples are ordered according to the generating component if
 <cite>trace_sort=True</cite>.</p>
@@ -268,16 +429,16 @@ combined importance weight of sample <span class="math notranslate nohighlight">
 <div class="math notranslate nohighlight">
 \[\frac{P(x)}{\frac{1}{\sum_{k=0}^T N_k} \sum_{l=0}^T N_l q_l(x)}\]</div>
 <p>The function
-<code class="xref py py-class docutils literal notranslate"><span class="pre">combine_weights</span></code> takes the
+<a class="reference internal" href="api.html#pypmc.sampler.importance_sampling.combine_weights" title="pypmc.sampler.importance_sampling.combine_weights"><code class="xref py py-class docutils literal notranslate"><span class="pre">combine_weights</span></code></a> takes the
 samples and regular importance weights as lists of arrays and the
 proposals as a list and returns the combined weights as
-<a class="reference internal" href="tools.html#pypmc.tools.History" title="pypmc.tools.History"><code class="xref py py-class docutils literal notranslate"><span class="pre">History</span></code></a> object such that the weights for each
+<a class="reference internal" href="api.html#pypmc.tools.History" title="pypmc.tools.History"><code class="xref py py-class docutils literal notranslate"><span class="pre">History</span></code></a> object such that the weights for each
 proposal are easily accessible.</p>
 </div>
 <div class="section" id="comparison">
 <h3><span class="section-number">4.4.3. </span>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h3>
 <p>Compared to the regular
-<a class="reference internal" href="sampler.html#pypmc.sampler.importance_sampling.ImportanceSampler" title="pypmc.sampler.importance_sampling.ImportanceSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a>,
+<a class="reference internal" href="api.html#pypmc.sampler.importance_sampling.ImportanceSampler" title="pypmc.sampler.importance_sampling.ImportanceSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">combined_weights</span></code> requires
 more memory and slightly more cpu, but usually increases the relative
 effective sample size, and in most cases significantly increases the
@@ -350,7 +511,7 @@ component, <span class="math notranslate nohighlight">\(\nu_k\)</span>, had to b
 updated. To add more flexibility and put less burden on the user, we
 update <span class="math notranslate nohighlight">\(\nu_k\)</span> by numerically solving equation 16 of <a class="reference internal" href="references.html#hod12" id="id8"><span>[HOD12]</span></a>,
 which involves the digamma function.</p>
-<p>The function <code class="xref py py-func docutils literal notranslate"><span class="pre">student_t_pmc</span></code> is invoked
+<p>The function <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.student_t_pmc" title="pypmc.mix_adapt.pmc.student_t_pmc"><code class="xref py py-func docutils literal notranslate"><span class="pre">student_t_pmc</span></code></a> is invoked
 just like its Gaussian counterpart, but has three extra arguments to
 limit the number of steps of the numerical solver
 (<code class="docutils literal notranslate"><span class="pre">dof_solver_steps</span></code>), and to pass the allowed range of values of
@@ -375,16 +536,16 @@ based on the cost of computing new samples whether it is worth running
 the EM for many iterations or if one gets better results by just
 computing new samples for a mixture that is not quite at the (local)
 optimum.</p>
-<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">PMC</span></code> object handles the convergence
+<p>A <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.PMC" title="pypmc.mix_adapt.pmc.PMC"><code class="xref py py-class docutils literal notranslate"><span class="pre">PMC</span></code></a> object handles the convergence
 testing for both Gaussian and Student’s t mixtures as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pmc</span> <span class="o">=</span> <span class="n">PMC</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
 <span class="n">pmc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The relevant keyword arguments to <code class="xref py py-class docutils literal notranslate"><span class="pre">PMC</span></code>
+<p>The relevant keyword arguments to <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.PMC" title="pypmc.mix_adapt.pmc.PMC"><code class="xref py py-class docutils literal notranslate"><span class="pre">PMC</span></code></a>
 are passed on to the actual updates done by
-<code class="xref py py-func docutils literal notranslate"><span class="pre">gaussian_pmc</span></code> or
-<code class="xref py py-func docutils literal notranslate"><span class="pre">student_t_pmc</span></code>.</p>
+<a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.gaussian_pmc" title="pypmc.mix_adapt.pmc.gaussian_pmc"><code class="xref py py-func docutils literal notranslate"><span class="pre">gaussian_pmc</span></code></a> or
+<a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.student_t_pmc" title="pypmc.mix_adapt.pmc.student_t_pmc"><code class="xref py py-func docutils literal notranslate"><span class="pre">student_t_pmc</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="variational-bayes">
@@ -500,12 +661,12 @@ your python shell and you should get plots similar to those shown modulo the ran
 starting values to the means and covariances of the components in
 order to accelerate convergence to a sensible solution. You can pass
 this information when you create the
-<code class="xref py py-class docutils literal notranslate"><span class="pre">GaussianInference</span></code>
+<a class="reference internal" href="api.html#pypmc.mix_adapt.variational.GaussianInference" title="pypmc.mix_adapt.variational.GaussianInference"><code class="xref py py-class docutils literal notranslate"><span class="pre">GaussianInference</span></code></a>
 object. Internally, the info is forwarded to a call to
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_variational_parameters</span></code>,
+<a class="reference internal" href="api.html#pypmc.mix_adapt.variational.GaussianInference.set_variational_parameters" title="pypmc.mix_adapt.variational.GaussianInference.set_variational_parameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_variational_parameters</span></code></a>,
 where all parameter names and symbols are explained in detail.</p>
 <p>If an initial guess in the form of a Gaussian
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code> is available, this can
+<a class="reference internal" href="api.html#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a> is available, this can
 be used to define the initial values using
 <code class="docutils literal notranslate"><span class="pre">GaussianInference(...</span> <span class="pre">initial_guess=mixture)</span></code></p>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">vb</span></code> object carries the posterior distribution of
@@ -584,7 +745,7 @@ change, then the metric does not change either. Output components can
 only die out if they receive no input component. Typically this is
 rare, so the number of output components is essentially chosen by the
 user, and not by the algorithm
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Hierarchical</span></code>. A user has to
+<a class="reference internal" href="api.html#pypmc.mix_adapt.hierarchical.Hierarchical" title="pypmc.mix_adapt.hierarchical.Hierarchical"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hierarchical</span></code></a>. A user has to
 supply the input mixture, and an initial guess of the output mixture,
 thereby defining the maximum number of components:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pypmc.mix_adapt.hierarchical</span> <span class="kn">import</span> <span class="n">Hierarchical</span>
@@ -592,7 +753,7 @@ thereby defining the maximum number of components:</p>
 <span class="n">h</span> <span class="o">=</span> <span class="n">Hierarchical</span><span class="p">(</span><span class="n">input_mixture</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where both arguments are <code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.mixture.MixtureDensity</span></code>
+<p>where both arguments are <a class="reference internal" href="api.html#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.mixture.MixtureDensity</span></code></a>
 objects. To perform the clustering:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
@@ -610,8 +771,8 @@ weight (<code class="docutils literal notranslate"><span class="pre">kill</span>
 original samples are not required, only the mixtures. Hence the
 clustering is much faster but less accurate compared to standard
 variational Bayes. To create a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">VBMerge</span></code> object, the required
-inputs are a <code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code>, the total
+<a class="reference internal" href="api.html#pypmc.mix_adapt.variational.VBMerge" title="pypmc.mix_adapt.variational.VBMerge"><code class="xref py py-class docutils literal notranslate"><span class="pre">VBMerge</span></code></a> object, the required
+inputs are a <a class="reference internal" href="api.html#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a>, the total
 number of samples encoded in the mixture <span class="math notranslate nohighlight">\(N\)</span>, and the the
 maximum number of components <span class="math notranslate nohighlight">\(K\)</span> desired in the compressed
 output mixture:</p>
@@ -622,8 +783,8 @@ output mixture:</p>
 </div>
 <p>As guidance, if <span class="math notranslate nohighlight">\(N\)</span> is not known, one should choose a large
 number like <span class="math notranslate nohighlight">\(N=10^4\)</span> to obtain decent results.</p>
-<p>The classes <code class="xref py py-class docutils literal notranslate"><span class="pre">VBMerge</span></code> and
-<code class="xref py py-class docutils literal notranslate"><span class="pre">GaussianInference</span></code> share the
+<p>The classes <a class="reference internal" href="api.html#pypmc.mix_adapt.variational.VBMerge" title="pypmc.mix_adapt.variational.VBMerge"><code class="xref py py-class docutils literal notranslate"><span class="pre">VBMerge</span></code></a> and
+<a class="reference internal" href="api.html#pypmc.mix_adapt.variational.GaussianInference" title="pypmc.mix_adapt.variational.GaussianInference"><code class="xref py py-class docutils literal notranslate"><span class="pre">GaussianInference</span></code></a> share the
 same interface; please check <a class="reference internal" href="#classic-vb"><span class="std std-ref">Classic version</span></a>.</p>
 <p>The great advantage compared to hierarchical clustering is that the
 number of output components is chosen automatically. One starts with
@@ -652,106 +813,51 @@ target density;</p></li>
 </div>
 
 
-            <div class="clearer"></div>
+           </div>
+           
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">4. User guide</a><ul>
-<li><a class="reference internal" href="#densities">4.1. Densities</a><ul>
-<li><a class="reference internal" href="#component-density">4.1.1. Component density</a></li>
-<li><a class="reference internal" href="#mixture-density">4.1.2. Mixture density</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#indicator-function">4.2. Indicator function</a></li>
-<li><a class="reference internal" href="#markov-chain">4.3. Markov chain</a><ul>
-<li><a class="reference internal" href="#initialization">4.3.1. Initialization</a></li>
-<li><a class="reference internal" href="#adaptation">4.3.2. Adaptation</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#importance-sampling">4.4. Importance sampling</a><ul>
-<li><a class="reference internal" href="#standard">4.4.1. Standard</a></li>
-<li><a class="reference internal" href="#deterministic-mixture">4.4.2. Deterministic mixture</a></li>
-<li><a class="reference internal" href="#comparison">4.4.3. Comparison</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pmc">4.5. PMC</a><ul>
-<li><a class="reference internal" href="#basic-approach">4.5.1. Basic approach</a></li>
-<li><a class="reference internal" href="#id6">4.5.2. Student’s t</a></li>
-<li><a class="reference internal" href="#pmc-with-multiple-em-steps">4.5.3. PMC with multiple EM steps</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#variational-bayes">4.6. Variational Bayes</a><ul>
-<li><a class="reference internal" href="#classic-version">4.6.1. Classic version</a><ul>
-<li><a class="reference internal" href="#id13">4.6.1.1. Initialization</a></li>
-<li><a class="reference internal" href="#running">4.6.1.2. Running</a></li>
-<li><a class="reference internal" href="#results">4.6.1.3. Results</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#mixture-reduction">4.7. Mixture reduction</a><ul>
-<li><a class="reference internal" href="#hierarchical-clustering">4.7.1. Hierarchical clustering</a></li>
-<li><a class="reference internal" href="#vbmerge">4.7.2. VBmerge</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#putting-it-all-together">4.8. Putting it all together</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="examples.html" class="btn btn-neutral float-right" title="5. Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="2. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="installation.html"
-                        title="previous chapter"><span class="section-number">2. </span>Installation</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="examples.html"
-                        title="next chapter"><span class="section-number">5. </span>Examples</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/user_guide.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2014-2021, Frederik Beaujean and Stephan Jahn and others.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="examples.html" title="5. Examples"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="installation.html" title="2. Installation"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pypmc 1.1.4 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>User guide</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Frederik Beaujean and Stephan Jahn.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
 </html>
