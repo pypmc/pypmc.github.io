@@ -32,6 +32,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/HTML-CSS"], "TeX": {"Macros": {"vecgamma": "{\\vec \\gamma}", "vecth": "{\\vec \\theta}"}}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -208,18 +210,18 @@
 <div class="section" id="densities">
 <h2><span class="section-number">4.1. </span>Densities<a class="headerlink" href="#densities" title="Permalink to this headline">¶</a></h2>
 <p>Pypmc revolves around adapting mixture densities of the form</p>
-<div class="math">
-<p><span class="math">q(x) = \sum_{j=1}^K \alpha_j q_j(x), \: \sum_{j=1}^K \alpha_j = 1</span></p>
-</div><p>where each component <span class="math">q_j</span> is either a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussian</a></p>
-<div class="math">
-<p><span class="math">q_j(x) = \mathcal{N}(x | \mu_j, \Sigma_j)</span></p>
-</div><p>or a <a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">student’s t</a> distribution</p>
-<div class="math">
-<p><span class="math">q_j(x) = \mathcal{T}(x | \mu_j, \Sigma_j, \nu) \,.</span></p>
-</div><p>The free parameters of the mixture density, <span class="math">\theta</span>, are the component weights
-<span class="math">\alpha_j</span>, the means <span class="math">\mu_j</span>, the covariances
-<span class="math">\Sigma_j</span> and in case <span class="math">q_j = \mathcal{T}</span> the degree of
-freedom <span class="math">\nu_j</span> for <span class="math">j=1 \dots K</span>.</p>
+<div class="math notranslate nohighlight">
+\[q(x) = \sum_{j=1}^K \alpha_j q_j(x), \: \sum_{j=1}^K \alpha_j = 1\]</div>
+<p>where each component <span class="math notranslate nohighlight">\(q_j\)</span> is either a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">Gaussian</a></p>
+<div class="math notranslate nohighlight">
+\[q_j(x) = \mathcal{N}(x | \mu_j, \Sigma_j)\]</div>
+<p>or a <a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">student’s t</a> distribution</p>
+<div class="math notranslate nohighlight">
+\[q_j(x) = \mathcal{T}(x | \mu_j, \Sigma_j, \nu) \,.\]</div>
+<p>The free parameters of the mixture density, <span class="math notranslate nohighlight">\(\theta\)</span>, are the component weights
+<span class="math notranslate nohighlight">\(\alpha_j\)</span>, the means <span class="math notranslate nohighlight">\(\mu_j\)</span>, the covariances
+<span class="math notranslate nohighlight">\(\Sigma_j\)</span> and in case <span class="math notranslate nohighlight">\(q_j = \mathcal{T}\)</span> the degree of
+freedom <span class="math notranslate nohighlight">\(\nu_j\)</span> for <span class="math notranslate nohighlight">\(j=1 \dots K\)</span>.</p>
 <div class="section" id="component-density">
 <h3><span class="section-number">4.1.1. </span>Component density<a class="headerlink" href="#component-density" title="Permalink to this headline">¶</a></h3>
 <p>The two densities — Gauss and student’s t — supported by pypmc
@@ -284,21 +286,21 @@ only a few attributes and methods:</p>
 </div>
 <div class="section" id="indicator-function">
 <span id="indicator"></span><h2><span class="section-number">4.2. </span>Indicator function<a class="headerlink" href="#indicator-function" title="Permalink to this headline">¶</a></h2>
-<p>The indicator function <span class="math">\mathbf{1}_V</span> can be used to limit the
-support of the target density to the volume <span class="math">V</span> in the samplers
+<p>The indicator function <span class="math notranslate nohighlight">\(\mathbf{1}_V\)</span> can be used to limit the
+support of the target density to the volume <span class="math notranslate nohighlight">\(V\)</span> in the samplers
 discussed below. It is defined as</p>
-<div class="math">
-<p><span class="math">\mathbf{1}_{V} (x) =
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{1}_{V} (x) =
 \begin{cases}
 1,  x \in V \\
 0, {\rm else}
-\end{cases}</span></p>
-</div><p>The <a class="reference internal" href="api.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">indicator</span></code></a> module has provides indicator
+\end{cases}\end{split}\]</div>
+<p>The <a class="reference internal" href="api.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">indicator</span></code></a> module has provides indicator
 functions for a <a class="reference internal" href="api.html#pypmc.tools.indicator.ball" title="pypmc.tools.indicator.ball"><code class="xref py py-func docutils literal notranslate"><span class="pre">ball</span></code></a> and a
-<a class="reference internal" href="api.html#pypmc.tools.indicator.hyperrectangle" title="pypmc.tools.indicator.hyperrectangle"><code class="xref py py-func docutils literal notranslate"><span class="pre">hyperrectangle</span></code></a> in <span class="math">D</span> dimensions.
+<a class="reference internal" href="api.html#pypmc.tools.indicator.hyperrectangle" title="pypmc.tools.indicator.hyperrectangle"><code class="xref py py-func docutils literal notranslate"><span class="pre">hyperrectangle</span></code></a> in <span class="math notranslate nohighlight">\(D\)</span> dimensions.
 The indicator function can be merged with the (unbounded) target
 density such that the the wrapper calls the target density only if the
-parameter vector is in V and returns <span class="math">\log(0)= -\infty</span> otherwise:</p>
+parameter vector is in V and returns <span class="math notranslate nohighlight">\(\log(0)= -\infty\)</span> otherwise:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pypmc.tools.indicator</span> <span class="kn">import</span> \
      <span class="n">merge_function_with_indicator</span>
 
@@ -337,7 +339,7 @@ initial point:</p>
 <p>The initial proposal covariance should be chosen similar to the
 target’s covariance, but scaled to yield an acceptance rate in the
 range of 20%. For a Gaussian target and a Gaussian proposal in
-<span class="math">D</span> dimensions, the scaling should be <span class="math">2.38^2/D</span></p>
+<span class="math notranslate nohighlight">\(D\)</span> dimensions, the scaling should be <span class="math notranslate nohighlight">\(2.38^2/D\)</span></p>
 <p>In order to constrain the support of the target in a simple way, one
 can pass an <a class="reference internal" href="api.html#module-pypmc.tools.indicator" title="pypmc.tools.indicator"><code class="xref py py-class docutils literal notranslate"><span class="pre">indicator</span></code></a> function to the
 constructor using the keyword argument <code class="docutils literal notranslate"><span class="pre">ind=indicator</span></code>. Then any
@@ -379,14 +381,14 @@ can be set via
 <p>The standard
 <a class="reference internal" href="api.html#pypmc.sampler.importance_sampling.ImportanceSampler" title="pypmc.sampler.importance_sampling.ImportanceSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a>
 implements serial importance sampling to compute the expectation of
-some function <span class="math">f</span> under the target <span class="math">P</span> as</p>
-<div class="math" id="fundamental-is">
-<p><span class="math">E_P[f] = \int dx P(x) f(x) \approx \frac{1}{N} \sum_{i=1}^N P(x_i) / q(x_i) f(x_i)=\frac{1}{N} \sum_{i=1}^N w_i f(x_i), x \sim q,</span></p>
-</div><p>where <span class="math">w_i</span> is the importance weight and <span class="math">q</span> is the
+some function <span class="math notranslate nohighlight">\(f\)</span> under the target <span class="math notranslate nohighlight">\(P\)</span> as</p>
+<div class="math notranslate nohighlight" id="fundamental-is">
+\[E_P[f] = \int dx P(x) f(x) \approx \frac{1}{N} \sum_{i=1}^N P(x_i) / q(x_i) f(x_i)=\frac{1}{N} \sum_{i=1}^N w_i f(x_i), x \sim q,\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_i\)</span> is the importance weight and <span class="math notranslate nohighlight">\(q\)</span> is the
 proposal density.</p>
-<p>To start, one only needs the target density <span class="math">P</span> defined by a
-function that computes <span class="math">log(P(x))</span> for an input vector
-<span class="math">x</span>, and similarly for <span class="math">q</span>:</p>
+<p>To start, one only needs the target density <span class="math notranslate nohighlight">\(P\)</span> defined by a
+function that computes <span class="math notranslate nohighlight">\(log(P(x))\)</span> for an input vector
+<span class="math notranslate nohighlight">\(x\)</span>, and similarly for <span class="math notranslate nohighlight">\(q\)</span>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pypmc.sampler.importance_sampling.ImportanceSampler</span>
 
 <span class="n">sampler</span> <span class="o">=</span> <span class="n">ImportanceSampler</span><span class="p">(</span><span class="n">log_target</span><span class="p">,</span> <span class="n">log_proposal</span><span class="p">)</span>
@@ -422,12 +424,12 @@ as though they were drawn from the mixture of individual proposals
 estimate of importance sampling</span></a>. The motivation to
 combine multiple proposals is to improve the variance of the estimator
 by reducing the effect of <cite>outliers</cite>; i.e., samples with very large
-weights in the tails of <span class="math">q</span>. For proposals <span class="math">\{q_l:
-l=1 \dots T\}</span> and <span class="math">N_l</span> available samples per proposal, the
-combined importance weight of sample <span class="math">x</span> becomes</p>
-<div class="math">
-<p><span class="math">\frac{P(x)}{\frac{1}{\sum_{k=0}^T N_k} \sum_{l=0}^T N_l q_l(x)}</span></p>
-</div><p>The function
+weights in the tails of <span class="math notranslate nohighlight">\(q\)</span>. For proposals <span class="math notranslate nohighlight">\(\{q_l:
+l=1 \dots T\}\)</span> and <span class="math notranslate nohighlight">\(N_l\)</span> available samples per proposal, the
+combined importance weight of sample <span class="math notranslate nohighlight">\(x\)</span> becomes</p>
+<div class="math notranslate nohighlight">
+\[\frac{P(x)}{\frac{1}{\sum_{k=0}^T N_k} \sum_{l=0}^T N_l q_l(x)}\]</div>
+<p>The function
 <a class="reference internal" href="api.html#pypmc.sampler.importance_sampling.combine_weights" title="pypmc.sampler.importance_sampling.combine_weights"><code class="xref py py-class docutils literal notranslate"><span class="pre">combine_weights</span></code></a> takes the
 samples and regular importance weights as lists of arrays and the
 proposals as a list and returns the combined weights as
@@ -461,7 +463,7 @@ this below) is to supply a good initial proposal.</p>
 <div class="section" id="basic-approach">
 <h3><span class="section-number">4.5.1. </span>Basic approach<a class="headerlink" href="#basic-approach" title="Permalink to this headline">¶</a></h3>
 <p>In the simplest scheme, new samples are drawn from the proposal
-<span class="math">q</span> in each iteration, importance weights computed, and only one
+<span class="math notranslate nohighlight">\(q\)</span> in each iteration, importance weights computed, and only one
 EM step is performed to tune the mixture parameters of the
 proposal. Then new samples are drawn, and the updating is iterated
 until a user-defined maximum number of steps or some heuristic
@@ -506,18 +508,18 @@ generating components be passed to <code class="docutils literal notranslate"><s
 <p>A student’s t distribution should be preferred over a Gaussian mixture
 if one suspects long tails in the target density. In the original
 proposal by Cappé et al. <a class="reference internal" href="references.html#cap-08" id="id7"><span>[Cap+08]</span></a>, the degree of freedom of each
-component, <span class="math">\nu_k</span>, had to be set manually, and it was not
+component, <span class="math notranslate nohighlight">\(\nu_k\)</span>, had to be set manually, and it was not
 updated. To add more flexibility and put less burden on the user, we
-update <span class="math">\nu_k</span> by numerically solving equation 16 of <a class="reference internal" href="references.html#hod12" id="id8"><span>[HOD12]</span></a>,
+update <span class="math notranslate nohighlight">\(\nu_k\)</span> by numerically solving equation 16 of <a class="reference internal" href="references.html#hod12" id="id8"><span>[HOD12]</span></a>,
 which involves the digamma function.</p>
 <p>The function <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.student_t_pmc" title="pypmc.mix_adapt.pmc.student_t_pmc"><code class="xref py py-func docutils literal notranslate"><span class="pre">student_t_pmc</span></code></a> is invoked
 just like its Gaussian counterpart, but has three extra arguments to
 limit the number of steps of the numerical solver
 (<code class="docutils literal notranslate"><span class="pre">dof_solver_steps</span></code>), and to pass the allowed range of values of
-<span class="math">\nu_k</span> (<code class="docutils literal notranslate"><span class="pre">mindof,</span> <span class="pre">maxdof</span></code>). The student’s t converges to the
-Gaussian distribution as <span class="math">\nu_k \to \infty</span>, but for practical
-purposes, <span class="math">\nu_k \approx 30</span> is usually close enough to
-<span class="math">\infty</span> and thus provides a sufficient upper bound.</p>
+<span class="math notranslate nohighlight">\(\nu_k\)</span> (<code class="docutils literal notranslate"><span class="pre">mindof,</span> <span class="pre">maxdof</span></code>). The student’s t converges to the
+Gaussian distribution as <span class="math notranslate nohighlight">\(\nu_k \to \infty\)</span>, but for practical
+purposes, <span class="math notranslate nohighlight">\(\nu_k \approx 30\)</span> is usually close enough to
+<span class="math notranslate nohighlight">\(\infty\)</span> and thus provides a sufficient upper bound.</p>
 <p>For small problems (few samples/components), the numerical
 solver may add a significant overhead to the overall time of one PMC
 update. But since it adds flexibility, our recommendation is to start
@@ -551,39 +553,39 @@ are passed on to the actual updates done by
 <h2><span class="section-number">4.6. </span>Variational Bayes<a class="headerlink" href="#variational-bayes" title="Permalink to this headline">¶</a></h2>
 <p>The general idea of variational Bayes is pedagogically explained in
 <a class="reference internal" href="references.html#bis06" id="id10"><span>[Bis06]</span></a>, Ch. 10. In a nutshell, the unknown joint posterior density
-of hidden (or latent) data <span class="math">Z</span> and the parameters <span class="math">\vecth</span>
+of hidden (or latent) data <span class="math notranslate nohighlight">\(Z\)</span> and the parameters <span class="math notranslate nohighlight">\(\vecth\)</span>
 is approximated by a distribution that factorizes as</p>
-<div class="math">
-<p><span class="math">q(Z, \vecth) = q(Z) q(\vecth)</span></p>
-</div><p>In our case, we assume the data <span class="math">X</span> to be generated from a
+<div class="math notranslate nohighlight">
+\[q(Z, \vecth) = q(Z) q(\vecth)\]</div>
+<p>In our case, we assume the data <span class="math notranslate nohighlight">\(X\)</span> to be generated from a
 mixture of Gaussians; i.e.,</p>
-<div class="math">
-<p><span class="math">X \sim P(X|\vecth) = \prod_{i=1}^N \sum_k \alpha_k q_k(x_i|\vecth).</span></p>
-</div><p>where the latent data have been marginalized out.  The priors over the
-parameters <span class="math">\vecth</span> are chosen conjugate to the likelihood such
-that the posterior <span class="math">q(\vecth)</span> has the same functional form as
-the prior. The prior and the variational posterior over <span class="math">\vecth</span>
-depend on hyperparameters <span class="math">\vecgamma_0</span> and <span class="math">\vecgamma</span>
-respectively. The only difference between <span class="math">P(\vecth)</span> and
-<span class="math">q(\vecth)</span> are the values of the hyperparameters, hence the
-knowledge update due to the data <span class="math">X</span> is captured by updating the
-values of <span class="math">\vecgamma</span>. In practice, this results in an
+<div class="math notranslate nohighlight">
+\[X \sim P(X|\vecth) = \prod_{i=1}^N \sum_k \alpha_k q_k(x_i|\vecth).\]</div>
+<p>where the latent data have been marginalized out.  The priors over the
+parameters <span class="math notranslate nohighlight">\(\vecth\)</span> are chosen conjugate to the likelihood such
+that the posterior <span class="math notranslate nohighlight">\(q(\vecth)\)</span> has the same functional form as
+the prior. The prior and the variational posterior over <span class="math notranslate nohighlight">\(\vecth\)</span>
+depend on hyperparameters <span class="math notranslate nohighlight">\(\vecgamma_0\)</span> and <span class="math notranslate nohighlight">\(\vecgamma\)</span>
+respectively. The only difference between <span class="math notranslate nohighlight">\(P(\vecth)\)</span> and
+<span class="math notranslate nohighlight">\(q(\vecth)\)</span> are the values of the hyperparameters, hence the
+knowledge update due to the data <span class="math notranslate nohighlight">\(X\)</span> is captured by updating the
+values of <span class="math notranslate nohighlight">\(\vecgamma\)</span>. In practice, this results in an
 expectation-maximization-like algorithm that seeks to optimize the
 lower bound of the evidence, or equivalently minimize the
-Kullback-Leibler divergence <span class="math">KL(q||P)</span>. The result of the
-optimization is a <em>local</em> optimum <span class="math">\vecgamma^{\ast}</span> that
+Kullback-Leibler divergence <span class="math notranslate nohighlight">\(KL(q||P)\)</span>. The result of the
+optimization is a <em>local</em> optimum <span class="math notranslate nohighlight">\(\vecgamma^{\ast}\)</span> that
 depends rather sensitively on the starting values. In each step,
-<span class="math">q(Z)</span> and <span class="math">q(\vecth)</span> are alternately updated.</p>
+<span class="math notranslate nohighlight">\(q(Z)\)</span> and <span class="math notranslate nohighlight">\(q(\vecth)\)</span> are alternately updated.</p>
 <p>Note that variational Bayes yields an approximation of the <cite>posterior</cite>
-over the mixture parameters <span class="math">q(\vecth | \vecgamma^{\ast})</span>,
-while the output of PMC is an optimal value <span class="math">\vecth^{\ast}</span>. So
+over the mixture parameters <span class="math notranslate nohighlight">\(q(\vecth | \vecgamma^{\ast})\)</span>,
+while the output of PMC is an optimal value <span class="math notranslate nohighlight">\(\vecth^{\ast}\)</span>. So
 in variational Bayes we can fully account for the uncertainty, while
 in PMC we cannot. However, when we are forced to create <cite>one</cite> mixture
-density based on <span class="math">q(\vecth | \vecgamma^{\ast})</span>, we choose
-<span class="math">\vecth^{\ast}</span> at the mode; i.e.</p>
-<div class="math">
-<p><span class="math">\vecth^{\ast} = \arg \max_{\vecth} q(\vecth | \vecgamma^{\ast}).</span></p>
-</div><p>Perhaps the biggest advantage of variational Bayes over PMC is that we
+density based on <span class="math notranslate nohighlight">\(q(\vecth | \vecgamma^{\ast})\)</span>, we choose
+<span class="math notranslate nohighlight">\(\vecth^{\ast}\)</span> at the mode; i.e.</p>
+<div class="math notranslate nohighlight">
+\[\vecth^{\ast} = \arg \max_{\vecth} q(\vecth | \vecgamma^{\ast}).\]</div>
+<p>Perhaps the biggest advantage of variational Bayes over PMC is that we
 can choose a prior that is noninformative but still prevents the usual
 pathologies of maximum likelihood such as excessive model complexity
 due to components that are responsible for only one sample and whose
@@ -600,7 +602,7 @@ over the parameters of a Gaussian mixture. In either case, one can
 fully specify all hyperparameter values for both the prior and the
 starting point of the posterior.</p>
 <p>The <em>classic</em> version <a class="reference internal" href="references.html#bis06" id="id11"><span>[Bis06]</span></a> is the most well known and widely
-used. It takes <span class="math">N</span> samples as input. The <em>mixture reduction</em>
+used. It takes <span class="math notranslate nohighlight">\(N\)</span> samples as input. The <em>mixture reduction</em>
 version <a class="reference internal" href="references.html#bgp10" id="id12"><span>[BGP10]</span></a> seeks to compress an input mixture of Gaussians to an
 output mixture with fewer components. This variant arises as a
 limiting case of the classic version.</p>
@@ -672,11 +674,11 @@ be used to define the initial values using
 hyperparameters describing a Gaussian mixture. Invoking
 <code class="docutils literal notranslate"><span class="pre">make_mixture()</span></code> singles out the mixture at the mode of the
 posterior. To have a well defined mode one needs <code class="docutils literal notranslate"><span class="pre">nu[k]</span> <span class="pre">&gt;</span> <span class="pre">d</span></code> and
-<code class="docutils literal notranslate"><span class="pre">alpha[k]</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> for at least one component <code class="docutils literal notranslate"><span class="pre">k</span></code>. We set <span class="math">\nu=3</span>
+<code class="docutils literal notranslate"><span class="pre">alpha[k]</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> for at least one component <code class="docutils literal notranslate"><span class="pre">k</span></code>. We set <span class="math notranslate nohighlight">\(\nu=3\)</span>
 such that the covariance at the mode of the Wishart distribution</p>
-<div class="math">
-<p><span class="math">\boldsymbol{\Sigma} = (\nu - d) \boldsymbol{W}^{-1} = \boldsymbol{W}^{-1}</span></p>
-</div><p>equals <span class="math">\boldsymbol{W}^{-1}</span> for <span class="math">d=2</span>. This allows us to
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\Sigma} = (\nu - d) \boldsymbol{W}^{-1} = \boldsymbol{W}^{-1}\]</div>
+<p>equals <span class="math notranslate nohighlight">\(\boldsymbol{W}^{-1}\)</span> for <span class="math notranslate nohighlight">\(d=2\)</span>. This allows us to
 plot the initial guess. The default placement
 <code class="docutils literal notranslate"><span class="pre">GaussianInference(...initial_guess=&quot;random&quot;)</span></code> is to randomly select
 <code class="docutils literal notranslate"><span class="pre">K</span></code> data points and start with a Gaussian of unit covariance
@@ -694,7 +696,7 @@ keyword. After a VB update, every component is <em>responsible</em> for an
 effective number of samples. If this is lower than the threshold set
 by <code class="docutils literal notranslate"><span class="pre">prune</span></code>, the component is pruned. In our experiments, a good rule
 of thumb to remove many components is to set the threshold to
-<span class="math">K/2</span>.</p>
+<span class="math notranslate nohighlight">\(K/2\)</span>.</p>
 </div>
 <div class="section" id="results">
 <h4><span class="section-number">4.6.1.3. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h4>
@@ -766,22 +768,22 @@ weight (<code class="docutils literal notranslate"><span class="pre">kill</span>
 <div class="section" id="vbmerge">
 <h3><span class="section-number">4.7.2. </span>VBmerge<a class="headerlink" href="#vbmerge" title="Permalink to this headline">¶</a></h3>
 <p>In <a class="reference internal" href="references.html#bgp10" id="id15"><span>[BGP10]</span></a>, a variational algorithm is derived in the limit of large
-<span class="math">N</span>, the total number of <cite>virtual</cite> input samples. That is, the
+<span class="math notranslate nohighlight">\(N\)</span>, the total number of <cite>virtual</cite> input samples. That is, the
 original samples are not required, only the mixtures. Hence the
 clustering is much faster but less accurate compared to standard
 variational Bayes. To create a
 <a class="reference internal" href="api.html#pypmc.mix_adapt.variational.VBMerge" title="pypmc.mix_adapt.variational.VBMerge"><code class="xref py py-class docutils literal notranslate"><span class="pre">VBMerge</span></code></a> object, the required
 inputs are a <a class="reference internal" href="api.html#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a>, the total
-number of samples encoded in the mixture <span class="math">N</span>, and the the
-maximum number of components <span class="math">K</span> desired in the compressed
+number of samples encoded in the mixture <span class="math notranslate nohighlight">\(N\)</span>, and the the
+maximum number of components <span class="math notranslate nohighlight">\(K\)</span> desired in the compressed
 output mixture:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pypmc.mix_adapt.variational</span> <span class="kn">import</span> <span class="n">VBMerge</span>
 
 <span class="n">VBMerge</span><span class="p">(</span><span class="n">input_mixture</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>As guidance, if <span class="math">N</span> is not known, one should choose a large
-number like <span class="math">N=10^4</span> to obtain decent results.</p>
+<p>As guidance, if <span class="math notranslate nohighlight">\(N\)</span> is not known, one should choose a large
+number like <span class="math notranslate nohighlight">\(N=10^4\)</span> to obtain decent results.</p>
 <p>The classes <a class="reference internal" href="api.html#pypmc.mix_adapt.variational.VBMerge" title="pypmc.mix_adapt.variational.VBMerge"><code class="xref py py-class docutils literal notranslate"><span class="pre">VBMerge</span></code></a> and
 <a class="reference internal" href="api.html#pypmc.mix_adapt.variational.GaussianInference" title="pypmc.mix_adapt.variational.GaussianInference"><code class="xref py py-class docutils literal notranslate"><span class="pre">GaussianInference</span></code></a> share the
 same interface; please check <a class="reference internal" href="#classic-vb"><span class="std std-ref">Classic version</span></a>.</p>
