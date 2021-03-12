@@ -32,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -173,24 +172,24 @@
             
   <div class="section" id="overview">
 <h1><span class="section-number">1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>Let <span class="math notranslate nohighlight">\(P\)</span> denote the target target density, and let <span class="math notranslate nohighlight">\(q\)</span>
+<p>Let <span class="math">P</span> denote the target target density, and let <span class="math">q</span>
 equal the proposal density. Then the basic idea of importance sampling
-is to approximate the integral of <span class="math notranslate nohighlight">\(P\)</span> as</p>
-<div class="math notranslate nohighlight">
-\[\int \mbox{d} x \, P(x) = \int \mbox{d} x \, q(x) \frac{P(x)}{q(x)}
-\approx \frac{1}{N} \sum_{i=1}{N} \frac{P(x_i)}{q(x_i)}\]</div>
-<p>where each <span class="math notranslate nohighlight">\(x\)</span> is a <span class="math notranslate nohighlight">\(D\)</span>-dimensional vector drawn
-independently from <span class="math notranslate nohighlight">\(q\)</span>. The <span class="math notranslate nohighlight">\(i\)</span>-th importance weight is
+is to approximate the integral of <span class="math">P</span> as</p>
+<div class="math">
+<p><span class="math">\int \mbox{d} x \, P(x) = \int \mbox{d} x \, q(x) \frac{P(x)}{q(x)}
+\approx \frac{1}{N} \sum_{i=1}{N} \frac{P(x_i)}{q(x_i)}</span></p>
+</div><p>where each <span class="math">x</span> is a <span class="math">D</span>-dimensional vector drawn
+independently from <span class="math">q</span>. The <span class="math">i</span>-th importance weight is
 defined as</p>
-<div class="math notranslate nohighlight">
-\[w_i \equiv \frac{P(x_i)}{q(x_i)}\]</div>
-<p>The most accurate estimate is obtained for <span class="math notranslate nohighlight">\(q=P\)</span>, so the goal is
-make <span class="math notranslate nohighlight">\(q\)</span> as close as possible to <span class="math notranslate nohighlight">\(P\)</span>.</p>
-<p>In pypmc, we choose <span class="math notranslate nohighlight">\(q\)</span> to be a mixture density composed of
-either Gaussian or student’s t components <span class="math notranslate nohighlight">\(q_j\)</span></p>
-<div class="math notranslate nohighlight">
-\[q(x) = \sum_j \alpha_j q_j(x), \: \sum_j \alpha_j = 1 \,.\]</div>
-<div class="section" id="initial-proposal-density">
+<div class="math">
+<p><span class="math">w_i \equiv \frac{P(x_i)}{q(x_i)}</span></p>
+</div><p>The most accurate estimate is obtained for <span class="math">q=P</span>, so the goal is
+make <span class="math">q</span> as close as possible to <span class="math">P</span>.</p>
+<p>In pypmc, we choose <span class="math">q</span> to be a mixture density composed of
+either Gaussian or student’s t components <span class="math">q_j</span></p>
+<div class="math">
+<p><span class="math">q(x) = \sum_j \alpha_j q_j(x), \: \sum_j \alpha_j = 1 \,.</span></p>
+</div><div class="section" id="initial-proposal-density">
 <h2><span class="section-number">1.1. </span>Initial proposal density<a class="headerlink" href="#initial-proposal-density" title="Permalink to this headline">¶</a></h2>
 <p>The key ingredient to make adaptive importance sampling work is a good
 initial proposal density that closely resembles the target density. A
@@ -216,7 +215,7 @@ level of individual samples, we have</p>
 <div class="section" id="proposal-updates">
 <h2><span class="section-number">1.2. </span>Proposal updates<a class="headerlink" href="#proposal-updates" title="Permalink to this headline">¶</a></h2>
 <p>Starting with an initial proposal, samples are drawn from the proposal
-<span class="math notranslate nohighlight">\(q\)</span>, the importance weights are computed, and the proposal is
+<span class="math">q</span>, the importance weights are computed, and the proposal is
 updated using the samples and weights to more closely approximate the
 target density. The two main update algorithms included are:</p>
 <ul class="simple">
