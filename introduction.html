@@ -179,7 +179,7 @@ equal the proposal density. Then the basic idea of importance sampling
 is to approximate the integral of <span class="math notranslate nohighlight">\(P\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[\int \mbox{d} x \, P(x) = \int \mbox{d} x \, q(x) \frac{P(x)}{q(x)}
-\approx \frac{1}{N} \sum_{i=1}{N} \frac{P(x_i)}{q(x_i)}\]</div>
+\approx \frac{1}{N} \sum_{i=1}^{N} \frac{P(x_i)}{q(x_i)}\]</div>
 <p>where each <span class="math notranslate nohighlight">\(x\)</span> is a <span class="math notranslate nohighlight">\(D\)</span>-dimensional vector drawn
 independently from <span class="math notranslate nohighlight">\(q\)</span>. The <span class="math notranslate nohighlight">\(i\)</span>-th importance weight is
 defined as</p>
