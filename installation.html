@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>2. Installation &mdash; pypmc 1.1.4 documentation</title>
+  <title>2. Installation &mdash; pypmc 1.1.5 documentation</title>
   
 
   
@@ -38,7 +38,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. User guide" href="user_guide.html" />
+    <link rel="next" title="3. User guide" href="user_guide.html" />
     <link rel="prev" title="1. Overview" href="introduction.html" /> 
 </head>
 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                1.1.4
+                1.1.5
               </div>
             
           
@@ -90,12 +90,18 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Overview</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#developer-notes">3. Developer notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">4. User guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">5. Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">6. References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">7. Reference Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#developer-notes">2.1. Developer notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#debian-or-derivative">2.1.1. Debian or derivative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conda">2.1.2. Conda</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">3. User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">5. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. Reference Guide</a></li>
 </ul>
 
             
@@ -201,27 +207,43 @@ index:</p>
 <p>after installation. Note that this is expected to fail if you run it from the
 pypmc source directory due to import mismatches. Just change to any other directory
 and it should work if the installation was successful.</p>
-</div>
 <div class="section" id="developer-notes">
-<h1><span class="section-number">3. </span>Developer notes<a class="headerlink" href="#developer-notes" title="Permalink to this headline">¶</a></h1>
+<h2><span class="section-number">2.1. </span>Developer notes<a class="headerlink" href="#developer-notes" title="Permalink to this headline">¶</a></h2>
 <p>If you want to build the latest version from <a class="reference external" href="https://github.com/pypmc/pypmc/">source</a>, you need install the dependencies
 yourself.</p>
-<p>On a debian-based system such as ubuntu &gt;= 16.04, you can install all required
+<p>To facilitate the handling, the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> in the top-level directory has useful targets for building, testing, doc generation and more:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">build</span>
+<span class="n">make</span> <span class="n">check</span>
+<span class="n">make</span> <span class="n">doc</span>
+<span class="n">make</span> <span class="n">sdist</span>
+</pre></div>
+</div>
+<div class="section" id="debian-or-derivative">
+<h3><span class="section-number">2.1.1. </span>Debian or derivative<a class="headerlink" href="#debian-or-derivative" title="Permalink to this headline">¶</a></h3>
+<p>On a debian-based system such as ubuntu &gt;= 20.04, you can install all required
 and optional dependencies from the package manager like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">cython3</span> <span class="n">python3</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python3</span><span class="o">-</span><span class="n">scipy</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">matplotlib</span> <span class="n">python3</span><span class="o">-</span><span class="n">mpi4py</span> <span class="n">python3</span><span class="o">-</span><span class="n">nose</span>
 </pre></div>
 </div>
+<p>To build the documentation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conda">
+<h3><span class="section-number">2.1.2. </span>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h3>
 <p>In a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment, you achieve the same with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">cython</span> <span class="n">numpy</span> <span class="n">scipy</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="n">matplotlib</span> <span class="n">mpi4py</span> <span class="n">nose</span>
 </pre></div>
 </div>
-<p>To build the documentation, first:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">sphinx</span>
+<p>To build the documentation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">sphinx</span> <span class="n">sphinx_rtd_theme</span>
 </pre></div>
 </div>
-<p>To facilitate the handling, a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> has useful targets for building, testing, etc.</p>
+</div>
+</div>
 </div>
 
 
@@ -230,7 +252,7 @@ and optional dependencies from the package manager like this:</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="user_guide.html" class="btn btn-neutral float-right" title="4. User guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="user_guide.html" class="btn btn-neutral float-right" title="3. User guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="introduction.html" class="btn btn-neutral float-left" title="1. Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

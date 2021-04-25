@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>1. Overview &mdash; pypmc 1.1.4 documentation</title>
+  <title>1. Overview &mdash; pypmc 1.1.5 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.1.4
+                1.1.5
               </div>
             
           
@@ -100,11 +100,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html#developer-notes">3. Developer notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">4. User guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">5. Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">6. References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">7. Reference Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">3. User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">5. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. Reference Guide</a></li>
 </ul>
 
             
@@ -174,7 +173,7 @@
             
   <div class="section" id="overview">
 <h1><span class="section-number">1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>Let <span class="math notranslate nohighlight">\(P\)</span> denote the target target density, and let <span class="math notranslate nohighlight">\(q\)</span>
+<p>Let <span class="math notranslate nohighlight">\(P\)</span> denote the target density, and let <span class="math notranslate nohighlight">\(q\)</span>
 equal the proposal density. Then the basic idea of importance sampling
 is to approximate the integral of <span class="math notranslate nohighlight">\(P\)</span> as</p>
 <div class="math notranslate nohighlight">
@@ -188,7 +187,7 @@ defined as</p>
 <p>The most accurate estimate is obtained for <span class="math notranslate nohighlight">\(q=P\)</span>, so the goal is
 make <span class="math notranslate nohighlight">\(q\)</span> as close as possible to <span class="math notranslate nohighlight">\(P\)</span>.</p>
 <p>In pypmc, we choose <span class="math notranslate nohighlight">\(q\)</span> to be a mixture density composed of
-either Gaussian or student’s t components <span class="math notranslate nohighlight">\(q_j\)</span></p>
+either Gaussian or Student’s t components <span class="math notranslate nohighlight">\(q_j\)</span></p>
 <div class="math notranslate nohighlight">
 \[q(x) = \sum_j \alpha_j q_j(x), \: \sum_j \alpha_j = 1 \,.\]</div>
 <div class="section" id="initial-proposal-density">
@@ -199,7 +198,7 @@ general method to automatically determine the bulk of the target is to
 run multiple Markov chains, and to use clustering to extract a mixture
 density from the samples <a class="reference internal" href="references.html#bc13" id="id1"><span>[BC13]</span></a>. We provide a generic implementation
 of adaptive local-random-walk MCMC <a class="reference internal" href="references.html#hst01" id="id2"><span>[HST01]</span></a> featuring Gauss and
-student’s t local proposals. MCMC can be used standalone and is
+Student’s t local proposals. MCMC can be used standalone and is
 usually all one needs for a unimodal distribution if the evidence is
 not of interest. For the clustering, we offer several options. At the
 level of individual samples, we have</p>
@@ -228,10 +227,10 @@ target density. The two main update algorithms included are:</p>
 <div class="section" id="pmc">
 <h2><span class="section-number">1.3. </span>PMC<a class="headerlink" href="#pmc" title="Permalink to this headline">¶</a></h2>
 <p>Based on the original proposal by Cappé et al. <a class="reference internal" href="references.html#cap-08" id="id8"><span>[Cap+08]</span></a>, we offer
-updates for a mixture of Gaussian or student’s t components. Important
+updates for a mixture of Gaussian or Student’s t components. Important
 improvements are:</p>
 <ul class="simple">
-<li><p>The option to adapt the student’s t degree of freedom - individually
+<li><p>The option to adapt the Student’s t degree of freedom - individually
 for each component - as in <a class="reference internal" href="references.html#hod12" id="id9"><span>[HOD12]</span></a>. That’s one less parameter that
 the user has to guess.</p></li>
 <li><p>The power to combine the proposals of subsequent steps
@@ -254,7 +253,7 @@ about the Gaussian mixture as new (importance) samples arrive.</p>
 <h2><span class="section-number">1.5. </span>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
 <p>Importance sampling naturally lends itself to massive parallelization
 because once the samples are drawn from the proposal, the computation
-of N importance weights requires N independent calls to the target
+of <span class="math notranslate nohighlight">\(N\)</span> importance weights requires <span class="math notranslate nohighlight">\(N\)</span> independent calls to the target
 density. Even for moderately complicated problems, these calls are
 typically the most expensive part of the calculation. With pypmc, the
 importance weights can optionally be computed in multiple processes on
@@ -263,7 +262,7 @@ Markov chains are independent and can be run in separate processes.</p>
 <p>The second major contribution to overall computing time is the update
 algorithm itself. We profiled the program and transferred the relevant
 loops from python to compiled C code via cython.</p>
-<p>The code is designed such that it does not get into the users way;
+<p>The code is designed such that it does not get into the user’s way;
 full control over how individual components interact is a major design
 goal.</p>
 </div>

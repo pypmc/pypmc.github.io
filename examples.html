@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>5. Examples &mdash; pypmc 1.1.4 documentation</title>
+  <title>4. Examples &mdash; pypmc 1.1.5 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. References" href="references.html" />
-    <link rel="prev" title="4. User guide" href="user_guide.html" /> 
+    <link rel="next" title="5. References" href="references.html" />
+    <link rel="prev" title="3. User guide" href="user_guide.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                1.1.4
+                1.1.5
               </div>
             
           
@@ -91,23 +91,22 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html#developer-notes">3. Developer notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">4. User guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#mcmc">5.1. MCMC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pmc">5.2. PMC</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#serial">5.2.1. Serial</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#parallel">5.2.2. Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">3. User guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mcmc">4.1. MCMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pmc">4.2. PMC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial">4.2.1. Serial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel">4.2.2. Parallel</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#grouping-by-gelman-rubin-r-value">5.3. Grouping by Gelman-Rubin R value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#variational-bayes">5.4. Variational Bayes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mixture-reduction">5.5. Mixture reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mcmc-variational-bayes">5.6. MCMC + variational Bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grouping-by-gelman-rubin-r-value">4.3. Grouping by Gelman-Rubin R value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variational-bayes">4.4. Variational Bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mixture-reduction">4.5. Mixture reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mcmc-variational-bayes">4.6. MCMC + variational Bayes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">6. References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">7. Reference Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">5. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. Reference Guide</a></li>
 </ul>
 
             
@@ -156,7 +155,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">5. </span>Examples</li>
+      <li><span class="section-number">4. </span>Examples</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -176,11 +175,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="examples">
-<h1><span class="section-number">5. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
 <p>The following examples are available in a checkout of the repository
 in the <code class="docutils literal notranslate"><span class="pre">examples/</span></code> directory.</p>
 <div class="section" id="mcmc">
-<h2><span class="section-number">5.1. </span>MCMC<a class="headerlink" href="#mcmc" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>MCMC<a class="headerlink" href="#mcmc" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This example illustrates how to run a Markov Chain using pypmc&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -250,9 +249,9 @@ in the <code class="docutils literal notranslate"><span class="pre">examples/</s
 </div>
 </div>
 <div class="section" id="pmc">
-<h2><span class="section-number">5.2. </span>PMC<a class="headerlink" href="#pmc" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>PMC<a class="headerlink" href="#pmc" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="serial">
-<h3><span class="section-number">5.2.1. </span>Serial<a class="headerlink" href="#serial" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.1. </span>Serial<a class="headerlink" href="#serial" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This example shows how to use importance sampling and how to</span>
 <span class="sd">adapt the proposal density using the pmc algorithm.</span>
 
@@ -393,7 +392,7 @@ in the <code class="docutils literal notranslate"><span class="pre">examples/</s
 </div>
 </div>
 <div class="section" id="parallel">
-<h3><span class="section-number">5.2.2. </span>Parallel<a class="headerlink" href="#parallel" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.2. </span>Parallel<a class="headerlink" href="#parallel" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This example shows how to use importance sampling and how to</span>
 <span class="sd">adapt the proposal density using the pmc algorithm in an MPI</span>
 <span class="sd">parallel environment.</span>
@@ -605,7 +604,7 @@ in the <code class="docutils literal notranslate"><span class="pre">examples/</s
 </div>
 </div>
 <div class="section" id="grouping-by-gelman-rubin-r-value">
-<h2><span class="section-number">5.3. </span>Grouping by Gelman-Rubin R value<a class="headerlink" href="#grouping-by-gelman-rubin-r-value" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Grouping by Gelman-Rubin R value<a class="headerlink" href="#grouping-by-gelman-rubin-r-value" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This example illustrates how to group Markov Chains according to the</span>
 <span class="sd">Gelman-Rubin R value (see [GR92]_).</span>
 
@@ -715,7 +714,7 @@ in the <code class="docutils literal notranslate"><span class="pre">examples/</s
 </div>
 </div>
 <div class="section" id="variational-bayes">
-<h2><span class="section-number">5.4. </span>Variational Bayes<a class="headerlink" href="#variational-bayes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>Variational Bayes<a class="headerlink" href="#variational-bayes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This example shows how to generate a &quot;best fit&quot; Gaussian mixture density</span>
 <span class="sd">from data using variational Bayes.</span>
 
@@ -830,7 +829,7 @@ in the <code class="docutils literal notranslate"><span class="pre">examples/</s
 </div>
 </div>
 <div class="section" id="mixture-reduction">
-<span id="ex-mix-red"></span><h2><span class="section-number">5.5. </span>Mixture reduction<a class="headerlink" href="#mixture-reduction" title="Permalink to this headline">¶</a></h2>
+<span id="ex-mix-red"></span><h2><span class="section-number">4.5. </span>Mixture reduction<a class="headerlink" href="#mixture-reduction" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;Demonstrate the usage of hierarchical clustering and variational</span>
 <span class="sd">Bayes (VBMerge) to reduce a given Gaussian mixture to a Gaussian</span>
 <span class="sd">mixture with a reduced number of components.</span>
@@ -946,7 +945,7 @@ in the <code class="docutils literal notranslate"><span class="pre">examples/</s
 </div>
 </div>
 <div class="section" id="mcmc-variational-bayes">
-<span id="ex-mcmc-vb"></span><h2><span class="section-number">5.6. </span>MCMC + variational Bayes<a class="headerlink" href="#mcmc-variational-bayes" title="Permalink to this headline">¶</a></h2>
+<span id="ex-mcmc-vb"></span><h2><span class="section-number">4.6. </span>MCMC + variational Bayes<a class="headerlink" href="#mcmc-variational-bayes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This example illustrates how pypmc can be used to integrate a</span>
 <span class="sd">non-negative function. The presented algorithm needs very little</span>
 <span class="sd">analytical knowledge about the function.</span>
@@ -1178,8 +1177,8 @@ in the <code class="docutils literal notranslate"><span class="pre">examples/</s
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="references.html" class="btn btn-neutral float-right" title="6. References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="user_guide.html" class="btn btn-neutral float-left" title="4. User guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="references.html" class="btn btn-neutral float-right" title="5. References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="user_guide.html" class="btn btn-neutral float-left" title="3. User guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
