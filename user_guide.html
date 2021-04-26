@@ -522,10 +522,10 @@ which involves the digamma function.</p>
 just like its Gaussian counterpart, but has three extra arguments to
 limit the number of steps of the numerical solver
 (<code class="docutils literal notranslate"><span class="pre">dof_solver_steps</span></code>), and to pass the allowed range of values of
-<span class="math notranslate nohighlight">\(\nu_k\)</span> (<code class="docutils literal notranslate"><span class="pre">mindof,</span> <span class="pre">maxdof</span></code>). The Student’s t converges to the
-Gaussian distribution as <span class="math notranslate nohighlight">\(\nu_k \to \infty\)</span>, but for practical
-purposes, <span class="math notranslate nohighlight">\(\nu_k \approx 30\)</span> is usually close enough to
-<span class="math notranslate nohighlight">\(\infty\)</span> and thus provides a sufficient upper bound.</p>
+<span class="math notranslate nohighlight">\(\nu_k\)</span> (<code class="docutils literal notranslate"><span class="pre">mindof,</span> <span class="pre">maxdof</span></code>). The Student’s t distribution
+converges to the Gaussian distribution as <span class="math notranslate nohighlight">\(\nu_k \to \infty\)</span>,
+but for practical purposes, <span class="math notranslate nohighlight">\(\nu_k \approx 30\)</span> is usually close
+enough to <span class="math notranslate nohighlight">\(\infty\)</span> and thus provides a sufficient upper bound.</p>
 <p>For small problems (few samples/components), the numerical
 solver may add a significant overhead to the overall time of one PMC
 update. But since it adds flexibility, our recommendation is to start
@@ -546,13 +546,14 @@ optimum.</p>
 <p>A <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.PMC" title="pypmc.mix_adapt.pmc.PMC"><code class="xref py py-class docutils literal notranslate"><span class="pre">PMC</span></code></a> object handles the convergence
 testing for both Gaussian and Student’s t mixtures as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pmc</span> <span class="o">=</span> <span class="n">PMC</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
-<span class="n">pmc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pmc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The relevant keyword arguments to <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.PMC" title="pypmc.mix_adapt.pmc.PMC"><code class="xref py py-class docutils literal notranslate"><span class="pre">PMC</span></code></a>
-are passed on to the actual updates done by
+<p>This means a maximum number of 1000 updates is performed but the
+updates are stopped if convergence is reached before that. For
+details, see <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.PMC.run" title="pypmc.mix_adapt.pmc.PMC.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run</span></code></a> that calls
 <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.gaussian_pmc" title="pypmc.mix_adapt.pmc.gaussian_pmc"><code class="xref py py-func docutils literal notranslate"><span class="pre">gaussian_pmc</span></code></a> or
-<a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.student_t_pmc" title="pypmc.mix_adapt.pmc.student_t_pmc"><code class="xref py py-func docutils literal notranslate"><span class="pre">student_t_pmc</span></code></a>.</p>
+<a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.student_t_pmc" title="pypmc.mix_adapt.pmc.student_t_pmc"><code class="xref py py-func docutils literal notranslate"><span class="pre">student_t_pmc</span></code></a> to do the heavy lifting.</p>
 </div>
 </div>
 <div class="section" id="variational-bayes">
@@ -796,7 +797,8 @@ same interface; please check <a class="reference internal" href="#classic-vb"><s
 <p>The great advantage compared to hierarchical clustering is that the
 number of output components is chosen automatically. One starts with
 (too) many components, updates, and removes those components with
-vanishing weight using <code class="docutils literal notranslate"><span class="pre">prune()</span></code>.</p>
+small weight using the <code class="docutils literal notranslate"><span class="pre">prune</span></code> argument to
+<a class="reference internal" href="api.html#pypmc.mix_adapt.variational.GaussianInference.run" title="pypmc.mix_adapt.variational.GaussianInference.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pypmc.mix_adapt.variational.GaussianInference.run</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="putting-it-all-together">

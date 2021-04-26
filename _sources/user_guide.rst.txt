@@ -353,10 +353,10 @@ The function :func:`~pypmc.mix_adapt.pmc.student_t_pmc` is invoked
 just like its Gaussian counterpart, but has three extra arguments to
 limit the number of steps of the numerical solver
 (``dof_solver_steps``), and to pass the allowed range of values of
-:math:`\nu_k` (``mindof, maxdof``). The Student's t converges to the
-Gaussian distribution as :math:`\nu_k \to \infty`, but for practical
-purposes, :math:`\nu_k \approx 30` is usually close enough to
-:math:`\infty` and thus provides a sufficient upper bound.
+:math:`\nu_k` (``mindof, maxdof``). The Student's t distribution
+converges to the Gaussian distribution as :math:`\nu_k \to \infty`,
+but for practical purposes, :math:`\nu_k \approx 30` is usually close
+enough to :math:`\infty` and thus provides a sufficient upper bound.
 
 For small problems (few samples/components), the numerical
 solver may add a significant overhead to the overall time of one PMC
@@ -381,12 +381,13 @@ A :class:`~pypmc.mix_adapt.pmc.PMC` object handles the convergence
 testing for both Gaussian and Student's t mixtures as follows::
 
     pmc = PMC(samples, prop)
-    pmc.run(verbose=True)
+    pmc.run(iterations=1000, rel_tol=1e-10, abs_tol=1e-5, verbose=True)
 
-The relevant keyword arguments to :class:`~pypmc.mix_adapt.pmc.PMC`
-are passed on to the actual updates done by
+This means a maximum number of 1000 updates is performed but the
+updates are stopped if convergence is reached before that. For
+details, see :meth:`~pypmc.mix_adapt.pmc.PMC.run` that calls
 :func:`~pypmc.mix_adapt.pmc.gaussian_pmc` or
-:func:`~pypmc.mix_adapt.pmc.student_t_pmc`.
+:func:`~pypmc.mix_adapt.pmc.student_t_pmc` to do the heavy lifting.
 
 Variational Bayes
 -----------------
@@ -660,7 +661,8 @@ same interface; please check :ref:`classic-vb`.
 The great advantage compared to hierarchical clustering is that the
 number of output components is chosen automatically. One starts with
 (too) many components, updates, and removes those components with
-vanishing weight using ``prune()``.
+small weight using the ``prune`` argument to
+:py:meth:`pypmc.mix_adapt.variational.GaussianInference.run`.
 
 Putting it all together
 -----------------------
