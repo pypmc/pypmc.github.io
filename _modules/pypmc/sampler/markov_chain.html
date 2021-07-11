@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -350,12 +353,12 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">covar_scale_factor</span>     <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;covar_scale_factor&#39;</span>     <span class="p">,</span> <span class="kc">None</span>    <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">covar_scale_factor_max</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;covar_scale_factor_max&#39;</span> <span class="p">,</span> <span class="mf">100.</span>    <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">covar_scale_factor_min</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;covar_scale_factor_min&#39;</span> <span class="p">,</span>    <span class="o">.</span><span class="mi">0001</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">covar_scale_factor_min</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;covar_scale_factor_min&#39;</span> <span class="p">,</span>    <span class="mf">.0001</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">force_acceptance_max</span>   <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;force_acceptance_max&#39;</span>   <span class="p">,</span>    <span class="o">.</span><span class="mi">35</span>  <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">force_acceptance_min</span>   <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;force_acceptance_min&#39;</span>   <span class="p">,</span>    <span class="o">.</span><span class="mi">15</span>  <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_acceptance_max</span>   <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;force_acceptance_max&#39;</span>   <span class="p">,</span>    <span class="mf">.35</span>  <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_acceptance_min</span>   <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;force_acceptance_min&#39;</span>   <span class="p">,</span>    <span class="mf">.15</span>  <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">damping</span>                <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;damping&#39;</span>                <span class="p">,</span>    <span class="o">.</span><span class="mi">5</span>   <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damping</span>                <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;damping&#39;</span>                <span class="p">,</span>    <span class="mf">.5</span>   <span class="p">)</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">AdaptiveMarkovChain</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
