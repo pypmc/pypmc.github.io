@@ -14,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/HTML-CSS"], "TeX": {"Macros": {"vecgamma": "{\\vec \\gamma}", "vecth": "{\\vec \\theta}"}}})</script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -49,30 +51,113 @@
 <li class="toctree-l1"><a class="reference internal" href="references.html">5. References</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. Reference Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-pypmc.density">6.1. Probability density</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.density.gauss">6.1.1. Gauss</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.density.student_t">6.1.2. StudentT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.density.mixture">6.1.3. Mixture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pypmc.density.base.LocalDensity"><code class="docutils literal notranslate"><span class="pre">LocalDensity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.base.LocalDensity.evaluate"><code class="docutils literal notranslate"><span class="pre">LocalDensity.evaluate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.base.LocalDensity.propose"><code class="docutils literal notranslate"><span class="pre">LocalDensity.propose</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pypmc.density.base.ProbabilityDensity"><code class="docutils literal notranslate"><span class="pre">ProbabilityDensity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.base.ProbabilityDensity.evaluate"><code class="docutils literal notranslate"><span class="pre">ProbabilityDensity.evaluate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.base.ProbabilityDensity.multi_evaluate"><code class="docutils literal notranslate"><span class="pre">ProbabilityDensity.multi_evaluate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.base.ProbabilityDensity.propose"><code class="docutils literal notranslate"><span class="pre">ProbabilityDensity.propose</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.density.gauss">6.1.1. Gauss</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.gauss.Gauss"><code class="docutils literal notranslate"><span class="pre">Gauss</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.gauss.LocalGauss"><code class="docutils literal notranslate"><span class="pre">LocalGauss</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.density.student_t">6.1.2. StudentT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.student_t.LocalStudentT"><code class="docutils literal notranslate"><span class="pre">LocalStudentT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.student_t.StudentT"><code class="docutils literal notranslate"><span class="pre">StudentT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.density.mixture">6.1.3. Mixture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.mixture.MixtureDensity"><code class="docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.mixture.create_gaussian_mixture"><code class="docutils literal notranslate"><span class="pre">create_gaussian_mixture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.mixture.create_t_mixture"><code class="docutils literal notranslate"><span class="pre">create_t_mixture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.mixture.recover_gaussian_mixture"><code class="docutils literal notranslate"><span class="pre">recover_gaussian_mixture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.density.mixture.recover_t_mixture"><code class="docutils literal notranslate"><span class="pre">recover_t_mixture</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-pypmc.sampler">6.2. Sampler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.sampler.markov_chain">6.2.1. Markov Chain</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.sampler.importance_sampling">6.2.2. Importance Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.sampler.markov_chain">6.2.1. Markov Chain</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.sampler.markov_chain.MarkovChain"><code class="docutils literal notranslate"><span class="pre">MarkovChain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.sampler.markov_chain.AdaptiveMarkovChain"><code class="docutils literal notranslate"><span class="pre">AdaptiveMarkovChain</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.sampler.importance_sampling">6.2.2. Importance Sampling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.sampler.importance_sampling.calculate_covariance"><code class="docutils literal notranslate"><span class="pre">calculate_covariance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.sampler.importance_sampling.calculate_expectation"><code class="docutils literal notranslate"><span class="pre">calculate_expectation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.sampler.importance_sampling.calculate_mean"><code class="docutils literal notranslate"><span class="pre">calculate_mean</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.sampler.importance_sampling.combine_weights"><code class="docutils literal notranslate"><span class="pre">combine_weights</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.sampler.importance_sampling.ImportanceSampler"><code class="docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-pypmc.mix_adapt">6.3. Mixture adaptation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.mix_adapt.hierarchical">6.3.1. Hierarchical clustering</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.mix_adapt.variational">6.3.2. Variational Bayes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.mix_adapt.pmc">6.3.3. PMC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.mix_adapt.r_value">6.3.4. Gelman-Rubin R-value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.mix_adapt.hierarchical">6.3.1. Hierarchical clustering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.hierarchical.Hierarchical"><code class="docutils literal notranslate"><span class="pre">Hierarchical</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.hierarchical.kullback_leibler"><code class="docutils literal notranslate"><span class="pre">kullback_leibler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.mix_adapt.variational">6.3.2. Variational Bayes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.variational.Dirichlet_log_C"><code class="docutils literal notranslate"><span class="pre">Dirichlet_log_C</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.variational.GaussianInference"><code class="docutils literal notranslate"><span class="pre">GaussianInference</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.variational.VBMerge"><code class="docutils literal notranslate"><span class="pre">VBMerge</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.variational.Wishart_H"><code class="docutils literal notranslate"><span class="pre">Wishart_H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.variational.Wishart_expect_log_lambda"><code class="docutils literal notranslate"><span class="pre">Wishart_expect_log_lambda</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.variational.Wishart_log_B"><code class="docutils literal notranslate"><span class="pre">Wishart_log_B</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.mix_adapt.pmc">6.3.3. PMC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.pmc.PMC"><code class="docutils literal notranslate"><span class="pre">PMC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.pmc.gaussian_pmc"><code class="docutils literal notranslate"><span class="pre">gaussian_pmc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.pmc.student_t_pmc"><code class="docutils literal notranslate"><span class="pre">student_t_pmc</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.mix_adapt.r_value">6.3.4. Gelman-Rubin R-value</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.r_value.make_r_gaussmix"><code class="docutils literal notranslate"><span class="pre">make_r_gaussmix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.r_value.make_r_tmix"><code class="docutils literal notranslate"><span class="pre">make_r_tmix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.r_value.r_group"><code class="docutils literal notranslate"><span class="pre">r_group</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.mix_adapt.r_value.r_value"><code class="docutils literal notranslate"><span class="pre">r_value</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-pypmc.tools">6.4. Tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.tools.convergence">6.4.1. Convergence diagnostics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#history">6.4.2. History</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.tools.indicator">6.4.3. Indicator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.tools.parallel_sampler">6.4.4. Parallel sampler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#partition">6.4.5. Partition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#plot">6.4.6. Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.tools.convergence">6.4.1. Convergence diagnostics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.convergence.ess"><code class="docutils literal notranslate"><span class="pre">ess</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.convergence.perp"><code class="docutils literal notranslate"><span class="pre">perp</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#history">6.4.2. History</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.History"><code class="docutils literal notranslate"><span class="pre">History</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.tools.indicator">6.4.3. Indicator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.indicator.ball"><code class="docutils literal notranslate"><span class="pre">ball</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.indicator.hyperrectangle"><code class="docutils literal notranslate"><span class="pre">hyperrectangle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.indicator.merge_function_with_indicator"><code class="docutils literal notranslate"><span class="pre">merge_function_with_indicator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pypmc.tools.parallel_sampler">6.4.4. Parallel sampler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.parallel_sampler.MPISampler"><code class="docutils literal notranslate"><span class="pre">MPISampler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#partition">6.4.5. Partition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.partition"><code class="docutils literal notranslate"><span class="pre">partition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.patch_data"><code class="docutils literal notranslate"><span class="pre">patch_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#plot">6.4.6. Plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.plot_mixture"><code class="docutils literal notranslate"><span class="pre">plot_mixture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pypmc.tools.plot_responsibility"><code class="docutils literal notranslate"><span class="pre">plot_responsibility</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -92,8 +177,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">6. </span>Reference Guide</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Reference Guide</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -104,9 +189,9 @@
            <div itemprop="articleBody">
              
   <section id="reference-guide">
-<h1><span class="section-number">6. </span>Reference Guide<a class="headerlink" href="#reference-guide" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">6. </span>Reference Guide<a class="headerlink" href="#reference-guide" title="Permalink to this heading"></a></h1>
 <section id="module-pypmc.density">
-<span id="probability-density"></span><h2><span class="section-number">6.1. </span>Probability density<a class="headerlink" href="#module-pypmc.density" title="Permalink to this headline"></a></h2>
+<span id="probability-density"></span><h2><span class="section-number">6.1. </span>Probability density<a class="headerlink" href="#module-pypmc.density" title="Permalink to this heading"></a></h2>
 <p>Collect probability densities</p>
 <span class="target" id="module-pypmc.density.base"></span><p>Collect abstract base probability density classes</p>
 <dl class="py class">
@@ -198,12 +283,12 @@ the output is written into this array.</p></li>
 </dd></dl>
 
 <section id="module-pypmc.density.gauss">
-<span id="gauss"></span><h3><span class="section-number">6.1.1. </span>Gauss<a class="headerlink" href="#module-pypmc.density.gauss" title="Permalink to this headline"></a></h3>
+<span id="gauss"></span><h3><span class="section-number">6.1.1. </span>Gauss<a class="headerlink" href="#module-pypmc.density.gauss" title="Permalink to this heading"></a></h3>
 <p>Collect Gaussian probability densities</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.density.gauss.Gauss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.density.gauss.</span></span><span class="sig-name descname"><span class="pre">Gauss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.gauss.Gauss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.ProbabilityDensity" title="pypmc.density.base.ProbabilityDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.base.ProbabilityDensity</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.ProbabilityDensity" title="pypmc.density.base.ProbabilityDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProbabilityDensity</span></code></a></p>
 <p>A Gaussian probability density. Can be used as component for
 MixtureDensities.</p>
 <dl class="field-list simple">
@@ -288,7 +373,7 @@ in and the proposal remains in a valid state.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.density.gauss.LocalGauss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.density.gauss.</span></span><span class="sig-name descname"><span class="pre">LocalGauss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.gauss.LocalGauss" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.LocalDensity" title="pypmc.density.base.LocalDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.base.LocalDensity</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.LocalDensity" title="pypmc.density.base.LocalDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalDensity</span></code></a></p>
 <p>A multivariate local Gaussian density with redefinable covariance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -355,12 +440,12 @@ and the proposal remains in a valid state.</p>
 
 </section>
 <section id="module-pypmc.density.student_t">
-<span id="studentt"></span><h3><span class="section-number">6.1.2. </span>StudentT<a class="headerlink" href="#module-pypmc.density.student_t" title="Permalink to this headline"></a></h3>
+<span id="studentt"></span><h3><span class="section-number">6.1.2. </span>StudentT<a class="headerlink" href="#module-pypmc.density.student_t" title="Permalink to this heading"></a></h3>
 <p>Collect Student’s t probability densities</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.density.student_t.LocalStudentT">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.density.student_t.</span></span><span class="sig-name descname"><span class="pre">LocalStudentT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">dof</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.student_t.LocalStudentT" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pypmc.density.gauss.LocalGauss" title="pypmc.density.gauss.LocalGauss"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.gauss.LocalGauss</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#pypmc.density.gauss.LocalGauss" title="pypmc.density.gauss.LocalGauss"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalGauss</span></code></a></p>
 <p>A multivariate local Student’s t density with redefinable covariance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -414,7 +499,7 @@ distribution</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.density.student_t.StudentT">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.density.student_t.</span></span><span class="sig-name descname"><span class="pre">StudentT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">dof</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.student_t.StudentT" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.ProbabilityDensity" title="pypmc.density.base.ProbabilityDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.base.ProbabilityDensity</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.ProbabilityDensity" title="pypmc.density.base.ProbabilityDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProbabilityDensity</span></code></a></p>
 <p>A Student’s t probability density. Can be used as a component in
 MixtureDensities.</p>
 <dl class="field-list simple">
@@ -502,12 +587,12 @@ are plugged in and the proposal remains in a valid state.</p>
 
 </section>
 <section id="module-pypmc.density.mixture">
-<span id="mixture"></span><h3><span class="section-number">6.1.3. </span>Mixture<a class="headerlink" href="#module-pypmc.density.mixture" title="Permalink to this headline"></a></h3>
+<span id="mixture"></span><h3><span class="section-number">6.1.3. </span>Mixture<a class="headerlink" href="#module-pypmc.density.mixture" title="Permalink to this heading"></a></h3>
 <p>Collect mixture probability densities</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.density.mixture.MixtureDensity">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.density.mixture.</span></span><span class="sig-name descname"><span class="pre">MixtureDensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.mixture.MixtureDensity" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.ProbabilityDensity" title="pypmc.density.base.ProbabilityDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.base.ProbabilityDensity</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.ProbabilityDensity" title="pypmc.density.base.ProbabilityDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProbabilityDensity</span></code></a></p>
 <p>Base class for mixture probability densities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -720,10 +805,10 @@ components; the mixture to be decomposed.</p>
 </section>
 </section>
 <section id="module-pypmc.sampler">
-<span id="sampler"></span><h2><span class="section-number">6.2. </span>Sampler<a class="headerlink" href="#module-pypmc.sampler" title="Permalink to this headline"></a></h2>
+<span id="sampler"></span><h2><span class="section-number">6.2. </span>Sampler<a class="headerlink" href="#module-pypmc.sampler" title="Permalink to this heading"></a></h2>
 <p>Collect the sampler modules</p>
 <section id="module-pypmc.sampler.markov_chain">
-<span id="markov-chain"></span><h3><span class="section-number">6.2.1. </span>Markov Chain<a class="headerlink" href="#module-pypmc.sampler.markov_chain" title="Permalink to this headline"></a></h3>
+<span id="markov-chain"></span><h3><span class="section-number">6.2.1. </span>Markov Chain<a class="headerlink" href="#module-pypmc.sampler.markov_chain" title="Permalink to this heading"></a></h3>
 <p>Collect Markov Chain</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.sampler.markov_chain.MarkovChain">
@@ -845,7 +930,7 @@ in [0,1) when calling <strong>rng.rand()</strong></p>
 
 </section>
 <section id="module-pypmc.sampler.importance_sampling">
-<span id="importance-sampling"></span><h3><span class="section-number">6.2.2. </span>Importance Sampling<a class="headerlink" href="#module-pypmc.sampler.importance_sampling" title="Permalink to this headline"></a></h3>
+<span id="importance-sampling"></span><h3><span class="section-number">6.2.2. </span>Importance Sampling<a class="headerlink" href="#module-pypmc.sampler.importance_sampling" title="Permalink to this heading"></a></h3>
 <p>Some useful tools for importance sampling. The main class is
 <a class="reference internal" href="#pypmc.sampler.importance_sampling.ImportanceSampler" title="pypmc.sampler.importance_sampling.ImportanceSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a> and there are some utility functions.</p>
 <dl class="py function">
@@ -975,11 +1060,11 @@ point in <code class="docutils literal notranslate"><span class="pre">self.targe
 </section>
 </section>
 <section id="module-pypmc.mix_adapt">
-<span id="mixture-adaptation"></span><h2><span class="section-number">6.3. </span>Mixture adaptation<a class="headerlink" href="#module-pypmc.mix_adapt" title="Permalink to this headline"></a></h2>
+<span id="mixture-adaptation"></span><h2><span class="section-number">6.3. </span>Mixture adaptation<a class="headerlink" href="#module-pypmc.mix_adapt" title="Permalink to this heading"></a></h2>
 <p>Collect algorithms to adapt a <a class="reference internal" href="#pypmc.density.base.ProbabilityDensity" title="pypmc.density.base.ProbabilityDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.base.ProbabilityDensity</span></code></a>
 to data.</p>
 <section id="module-pypmc.mix_adapt.hierarchical">
-<span id="hierarchical-clustering"></span><h3><span class="section-number">6.3.1. </span>Hierarchical clustering<a class="headerlink" href="#module-pypmc.mix_adapt.hierarchical" title="Permalink to this headline"></a></h3>
+<span id="hierarchical-clustering"></span><h3><span class="section-number">6.3.1. </span>Hierarchical clustering<a class="headerlink" href="#module-pypmc.mix_adapt.hierarchical" title="Permalink to this heading"></a></h3>
 <p>Hierarchical clustering as described in <a class="reference internal" href="references.html#gr04" id="id3"><span>[GR04]</span></a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.mix_adapt.hierarchical.Hierarchical">
@@ -1040,7 +1125,7 @@ declare convergence:</p>
 
 </section>
 <section id="module-pypmc.mix_adapt.variational">
-<span id="variational-bayes"></span><h3><span class="section-number">6.3.2. </span>Variational Bayes<a class="headerlink" href="#module-pypmc.mix_adapt.variational" title="Permalink to this headline"></a></h3>
+<span id="variational-bayes"></span><h3><span class="section-number">6.3.2. </span>Variational Bayes<a class="headerlink" href="#module-pypmc.mix_adapt.variational" title="Permalink to this heading"></a></h3>
 <p>Variational clustering as described in <a class="reference internal" href="references.html#bis06" id="id5"><span>[Bis06]</span></a></p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pypmc.mix_adapt.variational.Dirichlet_log_C">
@@ -1294,7 +1379,7 @@ using the update equations.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.mix_adapt.variational.VBMerge">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.mix_adapt.variational.</span></span><span class="sig-name descname"><span class="pre">VBMerge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_mixture</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.mix_adapt.variational.VBMerge" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pypmc.mix_adapt.variational.GaussianInference" title="pypmc.mix_adapt.variational.GaussianInference"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.mix_adapt.variational.GaussianInference</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#pypmc.mix_adapt.variational.GaussianInference" title="pypmc.mix_adapt.variational.GaussianInference"><code class="xref py py-class docutils literal notranslate"><span class="pre">GaussianInference</span></code></a></p>
 <p>Parsimonious reduction of Gaussian mixture models with a
 variational-Bayes approach <a class="reference internal" href="references.html#bgp10" id="id8"><span>[BGP10]</span></a>.</p>
 <p>The idea is to reduce the number of components of an overly complex Gaussian
@@ -1359,7 +1444,7 @@ the maximum possible and the parameter <code class="docutils literal notranslate
 
 </section>
 <section id="module-pypmc.mix_adapt.pmc">
-<span id="pmc"></span><h3><span class="section-number">6.3.3. </span>PMC<a class="headerlink" href="#module-pypmc.mix_adapt.pmc" title="Permalink to this headline"></a></h3>
+<span id="pmc"></span><h3><span class="section-number">6.3.3. </span>PMC<a class="headerlink" href="#module-pypmc.mix_adapt.pmc" title="Permalink to this heading"></a></h3>
 <p>Collect Population Monte Carlo</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.mix_adapt.pmc.PMC">
@@ -1564,7 +1649,7 @@ Otherwise, <code class="docutils literal notranslate"><span class="pre">density<
 
 </section>
 <section id="module-pypmc.mix_adapt.r_value">
-<span id="gelman-rubin-r-value"></span><h3><span class="section-number">6.3.4. </span>Gelman-Rubin R-value<a class="headerlink" href="#module-pypmc.mix_adapt.r_value" title="Permalink to this headline"></a></h3>
+<span id="gelman-rubin-r-value"></span><h3><span class="section-number">6.3.4. </span>Gelman-Rubin R-value<a class="headerlink" href="#module-pypmc.mix_adapt.r_value" title="Permalink to this heading"></a></h3>
 <p>Functions associated with the Gelman-Rubin R value <a class="reference internal" href="references.html#gr92" id="id20"><span>[GR92]</span></a>.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pypmc.mix_adapt.r_value.make_r_gaussmix">
@@ -1705,10 +1790,10 @@ If True, neglect the uncertainty induced by the sampling process.</p></li>
 </section>
 </section>
 <section id="module-pypmc.tools">
-<span id="tools"></span><h2><span class="section-number">6.4. </span>Tools<a class="headerlink" href="#module-pypmc.tools" title="Permalink to this headline"></a></h2>
+<span id="tools"></span><h2><span class="section-number">6.4. </span>Tools<a class="headerlink" href="#module-pypmc.tools" title="Permalink to this heading"></a></h2>
 <p>Helper functions for general purposes</p>
 <section id="module-pypmc.tools.convergence">
-<span id="convergence-diagnostics"></span><h3><span class="section-number">6.4.1. </span>Convergence diagnostics<a class="headerlink" href="#module-pypmc.tools.convergence" title="Permalink to this headline"></a></h3>
+<span id="convergence-diagnostics"></span><h3><span class="section-number">6.4.1. </span>Convergence diagnostics<a class="headerlink" href="#module-pypmc.tools.convergence" title="Permalink to this heading"></a></h3>
 <p>Provide functions to rate the quality of weighted samples.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pypmc.tools.convergence.ess">
@@ -1752,7 +1837,7 @@ terrible and <span class="math notranslate nohighlight">\(\mathcal{P}=1\)</span>
 
 </section>
 <section id="history">
-<h3><span class="section-number">6.4.2. </span>History<a class="headerlink" href="#history" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">6.4.2. </span>History<a class="headerlink" href="#history" title="Permalink to this heading"></a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.tools.History">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.tools.</span></span><span class="sig-name descname"><span class="pre">History</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prealloc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/tools/_history.html#History"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.tools.History" title="Permalink to this definition"></a></dt>
@@ -1824,7 +1909,7 @@ wrapped in an array of size <code class="docutils literal notranslate"><span cla
 
 </section>
 <section id="module-pypmc.tools.indicator">
-<span id="indicator"></span><h3><span class="section-number">6.4.3. </span>Indicator<a class="headerlink" href="#module-pypmc.tools.indicator" title="Permalink to this headline"></a></h3>
+<span id="indicator"></span><h3><span class="section-number">6.4.3. </span>Indicator<a class="headerlink" href="#module-pypmc.tools.indicator" title="Permalink to this heading"></a></h3>
 <p>Collect generators of typical indicator functions.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pypmc.tools.indicator.ball">
@@ -1887,7 +1972,7 @@ wrapped in an array of size <code class="docutils literal notranslate"><span cla
 
 </section>
 <section id="module-pypmc.tools.parallel_sampler">
-<span id="parallel-sampler"></span><h3><span class="section-number">6.4.4. </span>Parallel sampler<a class="headerlink" href="#module-pypmc.tools.parallel_sampler" title="Permalink to this headline"></a></h3>
+<span id="parallel-sampler"></span><h3><span class="section-number">6.4.4. </span>Parallel sampler<a class="headerlink" href="#module-pypmc.tools.parallel_sampler" title="Permalink to this heading"></a></h3>
 <p>Run sampling algorithms in parallel using mpi4py</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pypmc.tools.parallel_sampler.MPISampler">
@@ -1908,7 +1993,7 @@ sampler to be run in parallel. Example: <code class="docutils literal notranslat
 
 </section>
 <section id="partition">
-<h3><span class="section-number">6.4.5. </span>Partition<a class="headerlink" href="#partition" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">6.4.5. </span>Partition<a class="headerlink" href="#partition" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="pypmc.tools.partition">
 <span class="sig-prename descclassname"><span class="pre">pypmc.tools.</span></span><span class="sig-name descname"><span class="pre">partition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/tools/_partition.html#partition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.tools.partition" title="Permalink to this definition"></a></dt>
@@ -1945,7 +2030,7 @@ If <code class="docutils literal notranslate"><span class="pre">False</span></co
 
 </section>
 <section id="plot">
-<h3><span class="section-number">6.4.6. </span>Plot<a class="headerlink" href="#plot" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">6.4.6. </span>Plot<a class="headerlink" href="#plot" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="pypmc.tools.plot_mixture">
 <span class="sig-prename descclassname"><span class="pre">pypmc.tools.</span></span><span class="sig-name descname"><span class="pre">plot_mixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mixture</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'s':</span> <span class="pre">0.15}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nipy_spectral'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipse_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'alpha':</span> <span class="pre">0.3}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solid_edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visualize_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/tools/_plot.html#plot_mixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.tools.plot_mixture" title="Permalink to this definition"></a></dt>

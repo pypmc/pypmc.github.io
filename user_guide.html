@@ -14,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/HTML-CSS"], "TeX": {"Macros": {"vecgamma": "{\\vec \\gamma}", "vecth": "{\\vec \\theta}"}}})</script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -104,8 +106,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">3. </span>User guide</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>User guide</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/user_guide.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -116,9 +118,9 @@
            <div itemprop="articleBody">
              
   <section id="user-guide">
-<h1><span class="section-number">3. </span>User guide<a class="headerlink" href="#user-guide" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">3. </span>User guide<a class="headerlink" href="#user-guide" title="Permalink to this heading"></a></h1>
 <section id="densities">
-<h2><span class="section-number">3.1. </span>Densities<a class="headerlink" href="#densities" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.1. </span>Densities<a class="headerlink" href="#densities" title="Permalink to this heading"></a></h2>
 <p>Pypmc revolves around adapting mixture densities of the form</p>
 <div class="math notranslate nohighlight">
 \[q(x) = \sum_{j=1}^K \alpha_j q_j(x), \: \sum_{j=1}^K \alpha_j = 1\]</div>
@@ -133,7 +135,7 @@
 <span class="math notranslate nohighlight">\(\Sigma_j\)</span> and in case <span class="math notranslate nohighlight">\(q_j = \mathcal{T}\)</span> the degree of
 freedom <span class="math notranslate nohighlight">\(\nu_j\)</span> for <span class="math notranslate nohighlight">\(j=1 \dots K\)</span>.</p>
 <section id="component-density">
-<h3><span class="section-number">3.1.1. </span>Component density<a class="headerlink" href="#component-density" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.1.1. </span>Component density<a class="headerlink" href="#component-density" title="Permalink to this heading"></a></h3>
 <p>The two densities — Gauss and Student’s t — supported by pypmc
 come in two variants whose methods have identical names but differ in
 their arguments. The standard classes are
@@ -166,7 +168,7 @@ results, one would do:</p>
 </div>
 </section>
 <section id="mixture-density">
-<h3><span class="section-number">3.1.2. </span>Mixture density<a class="headerlink" href="#mixture-density" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.1.2. </span>Mixture density<a class="headerlink" href="#mixture-density" title="Permalink to this heading"></a></h3>
 <p>Mixture densities are represented by
 <a class="reference internal" href="api.html#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a>. One can create a
 mixture density from a list of arbitrary component densities and
@@ -195,7 +197,7 @@ only a few attributes and methods:</p>
 </section>
 </section>
 <section id="indicator-function">
-<span id="indicator"></span><h2><span class="section-number">3.2. </span>Indicator function<a class="headerlink" href="#indicator-function" title="Permalink to this headline"></a></h2>
+<span id="indicator"></span><h2><span class="section-number">3.2. </span>Indicator function<a class="headerlink" href="#indicator-function" title="Permalink to this heading"></a></h2>
 <p>The indicator function <span class="math notranslate nohighlight">\(\mathbf{1}_V\)</span> can be used to limit the
 support of the target density to the volume <span class="math notranslate nohighlight">\(V\)</span> in the samplers
 discussed below. It is defined as</p>
@@ -228,9 +230,9 @@ parameter vector is in V and returns <span class="math notranslate nohighlight">
 </div>
 </section>
 <section id="markov-chain">
-<h2><span class="section-number">3.3. </span>Markov chain<a class="headerlink" href="#markov-chain" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.3. </span>Markov chain<a class="headerlink" href="#markov-chain" title="Permalink to this heading"></a></h2>
 <section id="initialization">
-<h3><span class="section-number">3.3.1. </span>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.3.1. </span>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading"></a></h3>
 <p>We provide a generic implementation of adaptive local-random-walk MCMC
 <a class="reference internal" href="references.html#hst01" id="id1"><span>[HST01]</span></a> featuring Gauss and Student’s t local proposals. To create a
 <a class="reference internal" href="api.html#pypmc.sampler.markov_chain.MarkovChain" title="pypmc.sampler.markov_chain.MarkovChain"><code class="xref py py-class docutils literal notranslate"><span class="pre">MarkovChain</span></code></a>, one needs three ingredients:</p>
@@ -266,7 +268,7 @@ leads to significant speed-ups if the mass of the target density is
 close to a boundary, and its evaluation is slow.</p>
 </section>
 <section id="adaptation">
-<h3><span class="section-number">3.3.2. </span>Adaptation<a class="headerlink" href="#adaptation" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.3.2. </span>Adaptation<a class="headerlink" href="#adaptation" title="Permalink to this heading"></a></h3>
 <p>The prototypical use is to run the chain for a number of iterations
 until it finds the bulk of the distribution, and to discard these
 samples as burn-in or warm-up. Then the samples can be used to tune
@@ -292,9 +294,9 @@ can be set via
 </section>
 </section>
 <section id="importance-sampling">
-<h2><span class="section-number">3.4. </span>Importance sampling<a class="headerlink" href="#importance-sampling" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.4. </span>Importance sampling<a class="headerlink" href="#importance-sampling" title="Permalink to this heading"></a></h2>
 <section id="standard">
-<h3><span class="section-number">3.4.1. </span>Standard<a class="headerlink" href="#standard" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.4.1. </span>Standard<a class="headerlink" href="#standard" title="Permalink to this heading"></a></h3>
 <p>The standard
 <a class="reference internal" href="api.html#pypmc.sampler.importance_sampling.ImportanceSampler" title="pypmc.sampler.importance_sampling.ImportanceSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a>
 implements serial importance sampling to compute the expectation of
@@ -333,7 +335,7 @@ of several runs, the last one is available as <code class="docutils literal notr
 <cite>trace_sort=True</cite>.</p>
 </section>
 <section id="deterministic-mixture">
-<h3><span class="section-number">3.4.2. </span>Deterministic mixture<a class="headerlink" href="#deterministic-mixture" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.4.2. </span>Deterministic mixture<a class="headerlink" href="#deterministic-mixture" title="Permalink to this heading"></a></h3>
 <p>If weighted samples from the same target but different proposal
 densities are available, the weights can be combined in a clever way
 as though they were drawn from the mixture of individual proposals
@@ -354,7 +356,7 @@ proposals as a list and returns the combined weights as
 proposal are easily accessible.</p>
 </section>
 <section id="comparison">
-<h3><span class="section-number">3.4.3. </span>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.4.3. </span>Comparison<a class="headerlink" href="#comparison" title="Permalink to this heading"></a></h3>
 <p>Compared to the regular
 <a class="reference internal" href="api.html#pypmc.sampler.importance_sampling.ImportanceSampler" title="pypmc.sampler.importance_sampling.ImportanceSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportanceSampler</span></code></a>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">combined_weights</span></code> requires
@@ -366,7 +368,7 @@ proposal, then both samplers yield identical results.</p>
 </section>
 </section>
 <section id="pmc">
-<h2><span class="section-number">3.5. </span>PMC<a class="headerlink" href="#pmc" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.5. </span>PMC<a class="headerlink" href="#pmc" title="Permalink to this heading"></a></h2>
 <p><em>Population Monte Carlo</em> <a class="reference internal" href="references.html#cap-08" id="id3"><span>[Cap+08]</span></a> is a class of algorithms designed
 to approximate the target density by a mixture density. The basic idea
 is to minimize the Kullback-Leibler divergence between the target and
@@ -378,7 +380,7 @@ maximization (EM) and yields the optimal values of the parameters of a
 Gaussian or Student’s t mixture density. The crucial task (more on
 this below) is to supply a good initial proposal.</p>
 <section id="basic-approach">
-<h3><span class="section-number">3.5.1. </span>Basic approach<a class="headerlink" href="#basic-approach" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.5.1. </span>Basic approach<a class="headerlink" href="#basic-approach" title="Permalink to this heading"></a></h3>
 <p>In the simplest scheme, new samples are drawn from the proposal
 <span class="math notranslate nohighlight">\(q\)</span> in each iteration, importance weights computed, and only one
 EM step is performed to tune the mixture parameters of the
@@ -421,7 +423,7 @@ generating components be passed to <code class="docutils literal notranslate"><s
 <code class="docutils literal notranslate"><span class="pre">density</span></code> in place.</p>
 </section>
 <section id="id6">
-<h3><span class="section-number">3.5.2. </span>Student’s t<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.5.2. </span>Student’s t<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <p>A Student’s t distribution should be preferred over a Gaussian mixture
 if one suspects long tails in the target density. In the original
 proposal by Cappé et al. <a class="reference internal" href="references.html#cap-08" id="id7"><span>[Cap+08]</span></a>, the degree of freedom of each
@@ -444,7 +446,7 @@ with it and to only turn it off (<code class="docutils literal notranslate"><spa
 intolerable.</p>
 </section>
 <section id="pmc-with-multiple-em-steps">
-<h3><span class="section-number">3.5.3. </span>PMC with multiple EM steps<a class="headerlink" href="#pmc-with-multiple-em-steps" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.5.3. </span>PMC with multiple EM steps<a class="headerlink" href="#pmc-with-multiple-em-steps" title="Permalink to this heading"></a></h3>
 <p>In order to make the most out of the available samples, it is better
 to run multiple EM update steps to infer the parameters of the mixture
 density. The convergence criterion is the likelihood value given in
@@ -468,7 +470,7 @@ details, see <a class="reference internal" href="api.html#pypmc.mix_adapt.pmc.PM
 </section>
 </section>
 <section id="variational-bayes">
-<h2><span class="section-number">3.6. </span>Variational Bayes<a class="headerlink" href="#variational-bayes" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.6. </span>Variational Bayes<a class="headerlink" href="#variational-bayes" title="Permalink to this heading"></a></h2>
 <p>The general idea of variational Bayes is pedagogically explained in
 <a class="reference internal" href="references.html#bis06" id="id10"><span>[Bis06]</span></a>, Ch. 10. In a nutshell, the unknown joint posterior density
 of hidden (or latent) data <span class="math notranslate nohighlight">\(Z\)</span> and the parameters <span class="math notranslate nohighlight">\(\vecth\)</span>
@@ -525,7 +527,7 @@ version <a class="reference internal" href="references.html#bgp10" id="id12"><sp
 output mixture with fewer components. This variant arises as a
 limiting case of the classic version.</p>
 <section id="classic-version">
-<span id="classic-vb"></span><h3><span class="section-number">3.6.1. </span>Classic version<a class="headerlink" href="#classic-version" title="Permalink to this headline"></a></h3>
+<span id="classic-vb"></span><h3><span class="section-number">3.6.1. </span>Classic version<a class="headerlink" href="#classic-version" title="Permalink to this heading"></a></h3>
 <p>A basic example: draw samples from a standard Gaussian in 2D. Then run
 variational Bayes to recover that exact Gaussian. Paste the following code into
 your python shell and you should get plots similar to those shown modulo the random data points:</p>
@@ -575,7 +577,7 @@ your python shell and you should get plots similar to those shown modulo the ran
 <img alt="_images/user_guide-1.png" src="_images/user_guide-1.png" />
 </figure>
 <section id="id13">
-<h4><span class="section-number">3.6.1.1. </span>Initialization<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">3.6.1.1. </span>Initialization<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
 <p>In more complicated examples, it may be necessary to give good
 starting values to the means and covariances of the components in
 order to accelerate convergence to a sensible solution. You can pass
@@ -605,7 +607,7 @@ by user. A safe procedure is to choose <code class="docutils literal notranslate
 let variational Bayes figures out the right value.</p>
 </section>
 <section id="running">
-<h4><span class="section-number">3.6.1.2. </span>Running<a class="headerlink" href="#running" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">3.6.1.2. </span>Running<a class="headerlink" href="#running" title="Permalink to this heading"></a></h4>
 <p>Running variational Bayes with <code class="docutils literal notranslate"><span class="pre">vb.run()</span></code> can take a while if you
 have a lot of data points, lots of components, and high-dimensional
 data. Monitor the progress with <code class="docutils literal notranslate"><span class="pre">verbose=True</span></code>.</p>
@@ -617,7 +619,7 @@ of thumb to remove many components is to set the threshold to
 <span class="math notranslate nohighlight">\(K/2\)</span>.</p>
 </section>
 <section id="results">
-<h4><span class="section-number">3.6.1.3. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">3.6.1.3. </span>Results<a class="headerlink" href="#results" title="Permalink to this heading"></a></h4>
 <p>Continuing the example, you can inspect how all hyperparameters were
 updated by the data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vb</span><span class="o">.</span><span class="n">prior_posterior</span><span class="p">()</span>
@@ -635,7 +637,7 @@ covariance is close to the identity matrix:</p>
 </section>
 </section>
 <section id="mixture-reduction">
-<h2><span class="section-number">3.7. </span>Mixture reduction<a class="headerlink" href="#mixture-reduction" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.7. </span>Mixture reduction<a class="headerlink" href="#mixture-reduction" title="Permalink to this heading"></a></h2>
 <p>Let us suppose samples are fed into a clustering algorithm that yields
 a Gaussian mixture. To save memory, we discard the samples and retain
 only the mixture as a description of the data. Assume the same
@@ -648,7 +650,7 @@ Gaussian mixture with less components but similar descriptive power?
 We provide two algorithms for this task illustrated in the example
 <a class="reference internal" href="examples.html#ex-mix-red"><span class="std std-ref">Mixture reduction</span></a>.</p>
 <section id="hierarchical-clustering">
-<h3><span class="section-number">3.7.1. </span>Hierarchical clustering<a class="headerlink" href="#hierarchical-clustering" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.7.1. </span>Hierarchical clustering<a class="headerlink" href="#hierarchical-clustering" title="Permalink to this heading"></a></h3>
 <p>While the KL divergence between two Gaussians is known analytically,
 the corresponding result between Gaussian mixtures is not known.  The
 <cite>hierarchical clustering</cite> described in <a class="reference internal" href="references.html#gr04" id="id14"><span>[GR04]</span></a> seeks to minimize an
@@ -684,7 +686,7 @@ weight (<code class="docutils literal notranslate"><span class="pre">kill</span>
 (<code class="docutils literal notranslate"><span class="pre">max_steps</span></code>).</p>
 </section>
 <section id="vbmerge">
-<h3><span class="section-number">3.7.2. </span>VBmerge<a class="headerlink" href="#vbmerge" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.7.2. </span>VBmerge<a class="headerlink" href="#vbmerge" title="Permalink to this heading"></a></h3>
 <p>In <a class="reference internal" href="references.html#bgp10" id="id15"><span>[BGP10]</span></a>, a variational algorithm is derived in the limit of large
 <span class="math notranslate nohighlight">\(N\)</span>, the total number of <cite>virtual</cite> input samples. That is, the
 original samples are not required, only the mixtures. Hence the
@@ -713,7 +715,7 @@ small weight using the <code class="docutils literal notranslate"><span class="p
 </section>
 </section>
 <section id="putting-it-all-together">
-<h2><span class="section-number">3.8. </span>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.8. </span>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this heading"></a></h2>
 <p>The examples in the next section show how to use the different
 algorithms in practice. The most advanced example, <a class="reference internal" href="examples.html#ex-mcmc-vb"><span class="std std-ref">MCMC + variational Bayes</span></a>,
 demonstrates how to combine various algorithms to integrate and sample

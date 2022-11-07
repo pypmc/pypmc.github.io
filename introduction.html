@@ -14,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/HTML-CSS"], "TeX": {"Macros": {"vecgamma": "{\\vec \\gamma}", "vecth": "{\\vec \\theta}"}}})</script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -71,8 +73,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">1. </span>Overview</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1. </span>Overview</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,7 +85,7 @@
            <div itemprop="articleBody">
              
   <section id="overview">
-<h1><span class="section-number">1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h1>
 <p>Let <span class="math notranslate nohighlight">\(P\)</span> denote the target density, and let <span class="math notranslate nohighlight">\(q\)</span>
 equal the proposal density. Then the basic idea of importance sampling
 is to approximate the integral of <span class="math notranslate nohighlight">\(P\)</span> as</p>
@@ -102,7 +104,7 @@ either Gaussian or Student’s t components <span class="math notranslate nohigh
 <div class="math notranslate nohighlight">
 \[q(x) = \sum_j \alpha_j q_j(x), \: \sum_j \alpha_j = 1 \,.\]</div>
 <section id="initial-proposal-density">
-<h2><span class="section-number">1.1. </span>Initial proposal density<a class="headerlink" href="#initial-proposal-density" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.1. </span>Initial proposal density<a class="headerlink" href="#initial-proposal-density" title="Permalink to this heading"></a></h2>
 <p>The key ingredient to make adaptive importance sampling work is a good
 initial proposal density that closely resembles the target density. A
 general method to automatically determine the bulk of the target is to
@@ -125,7 +127,7 @@ level of individual samples, we have</p>
 </ul>
 </section>
 <section id="proposal-updates">
-<h2><span class="section-number">1.2. </span>Proposal updates<a class="headerlink" href="#proposal-updates" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.2. </span>Proposal updates<a class="headerlink" href="#proposal-updates" title="Permalink to this heading"></a></h2>
 <p>Starting with an initial proposal, samples are drawn from the proposal
 <span class="math notranslate nohighlight">\(q\)</span>, the importance weights are computed, and the proposal is
 updated using the samples and weights to more closely approximate the
@@ -136,7 +138,7 @@ target density. The two main update algorithms included are:</p>
 </ul>
 </section>
 <section id="pmc">
-<h2><span class="section-number">1.3. </span>PMC<a class="headerlink" href="#pmc" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.3. </span>PMC<a class="headerlink" href="#pmc" title="Permalink to this heading"></a></h2>
 <p>Based on the original proposal by Cappé et al. <a class="reference internal" href="references.html#cap-08" id="id8"><span>[Cap+08]</span></a>, we offer
 updates for a mixture of Gaussian or Student’s t components. Important
 improvements are:</p>
@@ -151,7 +153,7 @@ that adversely affect the variance of the integral estimate.</p></li>
 </ul>
 </section>
 <section id="variational-bayes">
-<h2><span class="section-number">1.4. </span>Variational Bayes<a class="headerlink" href="#variational-bayes" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4. </span>Variational Bayes<a class="headerlink" href="#variational-bayes" title="Permalink to this heading"></a></h2>
 <p>A powerful alternative to PMC is to use the variational Bayes
 algorithm <a class="reference internal" href="references.html#bis06" id="id11"><span>[Bis06]</span></a> to fit a Gaussian mixture to samples. We include a
 variant that also works with importance-weighted samples. Our
@@ -161,7 +163,7 @@ used in a sequential manner to incrementally update the knowledge
 about the Gaussian mixture as new (importance) samples arrive.</p>
 </section>
 <section id="performance">
-<h2><span class="section-number">1.5. </span>Performance<a class="headerlink" href="#performance" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.5. </span>Performance<a class="headerlink" href="#performance" title="Permalink to this heading"></a></h2>
 <p>Importance sampling naturally lends itself to massive parallelization
 because once the samples are drawn from the proposal, the computation
 of <span class="math notranslate nohighlight">\(N\)</span> importance weights requires <span class="math notranslate nohighlight">\(N\)</span> independent calls to the target

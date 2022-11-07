@@ -14,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -69,8 +71,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">2. </span>Installation</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>Installation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,7 +83,7 @@
            <div itemprop="articleBody">
              
   <section id="installation">
-<h1><span class="section-number">2. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">2. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <p>pypmc is developed and tested for python 3.6 and higher.</p>
 <p>pypmc depends only on a few standard modules:</p>
 <ul class="simple">
@@ -119,7 +121,7 @@ index:</p>
 pypmc source directory due to import mismatches. Just change to any other directory
 and it should work if the installation was successful.</p>
 <section id="developer-notes">
-<h2><span class="section-number">2.1. </span>Developer notes<a class="headerlink" href="#developer-notes" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.1. </span>Developer notes<a class="headerlink" href="#developer-notes" title="Permalink to this heading"></a></h2>
 <p>If you want to build the latest version from <a class="reference external" href="https://github.com/pypmc/pypmc/">source</a>, you need install the dependencies
 yourself.</p>
 <p>To facilitate the handling, the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> in the top-level directory has useful targets for building, testing, doc generation and more:</p>
@@ -130,7 +132,7 @@ yourself.</p>
 </pre></div>
 </div>
 <section id="debian-or-derivative">
-<h3><span class="section-number">2.1.1. </span>Debian or derivative<a class="headerlink" href="#debian-or-derivative" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.1.1. </span>Debian or derivative<a class="headerlink" href="#debian-or-derivative" title="Permalink to this heading"></a></h3>
 <p>On a debian-based system such as ubuntu &gt;= 20.04, you can install all required
 and optional dependencies from the package manager like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">cython3</span> <span class="n">python3</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python3</span><span class="o">-</span><span class="n">scipy</span>
@@ -143,7 +145,7 @@ and optional dependencies from the package manager like this:</p>
 </div>
 </section>
 <section id="conda">
-<h3><span class="section-number">2.1.2. </span>Conda<a class="headerlink" href="#conda" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.1.2. </span>Conda<a class="headerlink" href="#conda" title="Permalink to this heading"></a></h3>
 <p>In a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment, you achieve the same with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">cython</span> <span class="n">numpy</span> <span class="n">scipy</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="n">matplotlib</span> <span class="n">mpi4py</span> <span class="n">nose</span>
