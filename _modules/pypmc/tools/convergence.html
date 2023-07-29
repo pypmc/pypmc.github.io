@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pypmc.tools.convergence &mdash; pypmc 1.2 documentation</title>
+  <title>pypmc.tools.convergence &mdash; pypmc 1.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/plot_directive.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -26,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> pypmc
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pypmc
           </a>
               <div class="version">
-                1.2
+                1.2.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,7 +65,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
       <li class="breadcrumb-item active">pypmc.tools.convergence</li>
       <li class="wy-breadcrumbs-aside">
@@ -79,7 +83,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">_np</span>
 
 <div class="viewcode-block" id="perp"><a class="viewcode-back" href="../../../api.html#pypmc.tools.convergence.perp">[docs]</a><span class="k">def</span> <span class="nf">perp</span><span class="p">(</span><span class="n">weights</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the normalized perplexity :math:`\mathcal{P}` of samples</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the normalized perplexity :math:`\mathcal{P}` of samples</span>
 <span class="sd">    with ``weights`` :math:`\omega_i`. :math:`\mathcal{P}=0` is</span>
 <span class="sd">    terrible and :math:`\mathcal{P}=1` is perfect.</span>
 
@@ -115,7 +119,7 @@
 
 
 <div class="viewcode-block" id="ess"><a class="viewcode-back" href="../../../api.html#pypmc.tools.convergence.ess">[docs]</a><span class="k">def</span> <span class="nf">ess</span><span class="p">(</span><span class="n">weights</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the normalized effective sample size :math:`ESS` [LC95]_</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the normalized effective sample size :math:`ESS` [LC95]_</span>
 <span class="sd">    of samples with ``weights`` :math:`\omega_i`.  :math:`ESS=0` is</span>
 <span class="sd">    terrible and :math:`ESS=1` is perfect.</span>
 

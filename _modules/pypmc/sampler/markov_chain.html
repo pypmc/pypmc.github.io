@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pypmc.sampler.markov_chain &mdash; pypmc 1.2 documentation</title>
+  <title>pypmc.sampler.markov_chain &mdash; pypmc 1.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/plot_directive.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -26,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> pypmc
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pypmc
           </a>
               <div class="version">
-                1.2
+                1.2.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,7 +65,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
       <li class="breadcrumb-item active">pypmc.sampler.markov_chain</li>
       <li class="wy-breadcrumbs-aside">
@@ -85,7 +89,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MarkovChain"><a class="viewcode-back" href="../../../api.html#pypmc.sampler.markov_chain.MarkovChain">[docs]</a><span class="k">class</span> <span class="nc">MarkovChain</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A Markov chain to generate samples from the target density.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;A Markov chain to generate samples from the target density.</span>
 
 <span class="sd">    :param target:</span>
 
@@ -161,7 +165,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;``target(start)`` must evaluate to a finite value and ``indicator(start)`` must be ``True``&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Clear history of visited points (stored in ``self.samples``) and</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Clear history of visited points (stored in ``self.samples``) and</span>
 <span class="sd">        other internal variables to free memory.</span>
 
 <span class="sd">        .. note::</span>
@@ -173,7 +177,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">target_values</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">continue_on_NaN</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Run the chain and store the history of visited points into</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Run the chain and store the history of visited points into</span>
 <span class="sd">        the member variable ``self.samples``. Returns the number of</span>
 <span class="sd">        accepted points during the run.</span>
 
@@ -240,11 +244,11 @@
         <span class="k">return</span> <span class="n">accept_count</span>
 
     <span class="k">def</span> <span class="nf">_get_log_rho_metropolis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposed_point</span><span class="p">,</span> <span class="n">proposed_eval</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;calculate the log of the metropolis ratio&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;calculate the log of the metropolis ratio&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">proposed_eval</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_target_eval</span>
 
     <span class="k">def</span> <span class="nf">_get_log_rho_metropolis_hastings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposed_point</span><span class="p">,</span> <span class="n">proposed_eval</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;calculate log(metropolis ratio times hastings factor)&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;calculate log(metropolis ratio times hastings factor)&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_log_rho_metropolis</span><span class="p">(</span><span class="n">proposed_point</span><span class="p">,</span> <span class="n">proposed_eval</span><span class="p">)</span>\
              <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposal</span><span class="o">.</span><span class="n">evaluate</span>      <span class="p">(</span><span class="n">proposed_point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span> \
              <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposal</span><span class="o">.</span><span class="n">evaluate</span>      <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">proposed_point</span><span class="p">)</span></div>
@@ -290,7 +294,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_accept_count</span>
 
     <span class="k">def</span> <span class="nf">set_adapt_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sets variables for covariance adaptation.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sets variables for covariance adaptation.</span>
 
 <span class="sd">        When :meth:`.adapt` is called, the proposal&#39;s covariance matrix is</span>
 <span class="sd">        adapted in order to improve the chain&#39;s performance. The aim</span>
@@ -418,7 +422,7 @@
 
 
     <span class="k">def</span> <span class="nf">adapt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Update the proposal using the points</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Update the proposal using the points</span>
 <span class="sd">        stored in ``self.samples[-1]`` and the parameters which can be set via</span>
 <span class="sd">        :py:meth:`.set_adapt_params`.</span>
 <span class="sd">        In the above referenced function&#39;s docstring, the algorithm is</span>
@@ -466,7 +470,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">proposal</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proposal</span><span class="o">.</span><span class="n">sigma</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_scale_multiplier</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_update_scale_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">accept_rate</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Private function.</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Private function.</span>
 <span class="sd">        Updates the covariance scaling factor ``covar_scale_factor``</span>
 <span class="sd">        according to its limits</span>
 

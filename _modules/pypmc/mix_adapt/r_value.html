@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pypmc.mix_adapt.r_value &mdash; pypmc 1.2 documentation</title>
+  <title>pypmc.mix_adapt.r_value &mdash; pypmc 1.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/plot_directive.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -26,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> pypmc
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pypmc
           </a>
               <div class="version">
-                1.2
+                1.2.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,7 +65,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
       <li class="breadcrumb-item active">pypmc.mix_adapt.r_value</li>
       <li class="wy-breadcrumbs-aside">
@@ -98,7 +102,7 @@
 <div class="viewcode-block" id="r_value"><a class="viewcode-back" href="../../../api.html#pypmc.mix_adapt.r_value.r_value">[docs]</a><span class="nd">@_add_to_docstring</span><span class="p">(</span><span class="n">_manual_param_approx</span><span class="p">)</span>
 <span class="nd">@_add_to_docstring</span><span class="p">(</span><span class="n">_manual_param_n</span> <span class="o">%</span><span class="nb">dict</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="s1">&#39;variances&#39;</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">r_value</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">variances</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">approx</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Calculate the Gelman-Rubin R value (Chapter 2.2 in [GR92]_).</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculate the Gelman-Rubin R value (Chapter 2.2 in [GR92]_).</span>
 
 <span class="sd">    The R value can be used to quantify mixing of &quot;multiple iterative</span>
 <span class="sd">    simulations&quot; (e.g. Markov Chains) in parameter space.  An R value</span>
@@ -172,7 +176,7 @@
 <span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
 <span class="nd">@_add_to_docstring</span><span class="p">(</span><span class="n">_manual_param_n</span> <span class="o">%</span><span class="nb">dict</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="s1">&#39;variances&#39;</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">r_group</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">variances</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">critical_r</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">approx</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Group ``m`` (Markov) chains whose common :py:func:`.r_value` is</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Group ``m`` (Markov) chains whose common :py:func:`.r_value` is</span>
 <span class="sd">    less than ``critical_r`` in each of the D dimensions.</span>
 
 <span class="sd">    :param means:</span>
@@ -214,7 +218,7 @@
     <span class="k">return</span> <span class="n">groups</span></div>
 
 <span class="k">def</span> <span class="nf">_make_r_patches</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">K_g</span><span class="p">,</span> <span class="n">critical_r</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">approx</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Helper function for :py:func:`.make_r_gaussmix` and</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Helper function for :py:func:`.make_r_gaussmix` and</span>
 <span class="sd">    :py:func:`.make_r_tmix`. Group the ``data`` according to the R value</span>
 <span class="sd">    and split each group into ``K_g`` patches. Return the patch means</span>
 <span class="sd">    and covariances. For details see the docstrings of the above mentioned</span>
@@ -275,7 +279,7 @@
 
 <div class="viewcode-block" id="make_r_gaussmix"><a class="viewcode-back" href="../../../api.html#pypmc.mix_adapt.r_value.make_r_gaussmix">[docs]</a><span class="nd">@_add_to_docstring</span><span class="p">(</span><span class="n">_manual_param_approx</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">make_r_gaussmix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">K_g</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">critical_r</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">approx</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Use ``data`` from multiple &quot;Iterative Simulations&quot; (e.g. Markov</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Use ``data`` from multiple &quot;Iterative Simulations&quot; (e.g. Markov</span>
 <span class="sd">    Chains) to form a Gaussian Mixture. This approach refers to the</span>
 <span class="sd">    &quot;long patches&quot; in [BC13]_.</span>
 
@@ -324,7 +328,7 @@
 
 <div class="viewcode-block" id="make_r_tmix"><a class="viewcode-back" href="../../../api.html#pypmc.mix_adapt.r_value.make_r_tmix">[docs]</a><span class="nd">@_add_to_docstring</span><span class="p">(</span><span class="n">_manual_param_approx</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">make_r_tmix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">K_g</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">critical_r</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">dof</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">approx</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Use ``data`` from multiple &quot;Iterative Simulations&quot; (e.g. Markov</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Use ``data`` from multiple &quot;Iterative Simulations&quot; (e.g. Markov</span>
 <span class="sd">    Chains) to form a Student t Mixture. This approach refers to the</span>
 <span class="sd">    &quot;long patches&quot; in [BC13]_.</span>
 

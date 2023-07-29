@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6. Reference Guide &mdash; pypmc 1.2 documentation</title>
+  <title>6. Reference Guide &mdash; pypmc 1.2.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/HTML-CSS"], "TeX": {"Macros": {"vecgamma": "{\\vec \\gamma}", "vecth": "{\\vec \\theta}"}}})</script>
@@ -30,14 +30,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> pypmc
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pypmc
           </a>
               <div class="version">
-                1.2
+                1.2.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -177,7 +181,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active"><span class="section-number">6. </span>Reference Guide</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
@@ -206,7 +210,7 @@ proposal for the Markov chain sampler.</p>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code> given <code class="docutils literal notranslate"><span class="pre">y</span></code>,
 namely log(q(x|y)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – Vector-like array; the proposed point</p></li>
 <li><p><strong>y</strong> – Vector-like array; the current point</p></li>
@@ -221,7 +225,7 @@ namely log(q(x|y)).</p>
 <dd><p>Propose a new point given <code class="docutils literal notranslate"><span class="pre">y</span></code> using the random number
 generator <code class="docutils literal notranslate"><span class="pre">rng</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>y</strong> – Vector-like array; the current position</p></li>
 <li><p><strong>rng</strong> – State of a random number generator like numpy.random.mtrand</p></li>
@@ -243,7 +247,7 @@ for the importance sampler.</p>
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/density/base.html#ProbabilityDensity.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.density.base.ProbabilityDensity.evaluate" title="Permalink to this definition"></a></dt>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code>, namely log(q(x)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> – Vector-like array; the proposed point.</p>
 </dd>
 </dl>
@@ -255,7 +259,7 @@ for the importance sampler.</p>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code>, namely log(q(x))
 for each row in x.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – Matrix-like array; the proposed points. Expect i-th accessible
 as <code class="docutils literal notranslate"><span class="pre">x[i]</span></code>.</p></li>
@@ -271,7 +275,7 @@ the output is written into this array.</p></li>
 <span class="sig-name descname"><span class="pre">propose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">numpy.random.mtrand</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/density/base.html#ProbabilityDensity.propose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.density.base.ProbabilityDensity.propose" title="Permalink to this definition"></a></dt>
 <dd><p>Propose N points using the random number generator <code class="docutils literal notranslate"><span class="pre">rng</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Integer; the number of random points to be proposed</p></li>
 <li><p><strong>rng</strong> – State of a random number generator like <code class="docutils literal notranslate"><span class="pre">numpy.random.mtrand</span></code></p></li>
@@ -292,7 +296,7 @@ the output is written into this array.</p></li>
 <p>A Gaussian probability density. Can be used as component for
 MixtureDensities.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mu</strong> – Vector-like array; the gaussian’s mean <span class="math notranslate nohighlight">\(\mu\)</span></p></li>
 <li><p><strong>sigma</strong> – Matrix-like array; the gaussian’s covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span></p></li>
@@ -304,7 +308,7 @@ MixtureDensities.</p>
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.gauss.Gauss.evaluate" title="Permalink to this definition"></a></dt>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code>, namely log(q(x)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> – Vector-like array; the proposed point.</p>
 </dd>
 </dl>
@@ -316,7 +320,7 @@ MixtureDensities.</p>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code>, namely log(q(x))
 for each row in x.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – Matrix-like array; the proposed points. Expect i-th accessible
 as <code class="docutils literal notranslate"><span class="pre">x[i]</span></code>.</p></li>
@@ -334,7 +338,7 @@ the output is written into this array.</p></li>
 <span class="sig-name descname"><span class="pre">propose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">numpy.random.mtrand</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
 <dd><p>Propose N points using the random number generator <code class="docutils literal notranslate"><span class="pre">rng</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Integer; the number of random points to be proposed</p></li>
 <li><p><strong>rng</strong> – State of a random number generator like <code class="docutils literal notranslate"><span class="pre">numpy.random.mtrand</span></code></p></li>
@@ -353,7 +357,7 @@ the output is written into this array.</p></li>
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.gauss.Gauss.update" title="Permalink to this definition"></a></dt>
 <dd><p>Re-initialize the density with new mean and covariance matrix.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mu</strong> – Vector-like array; the gaussian’s mean <span class="math notranslate nohighlight">\(\mu\)</span></p></li>
 <li><p><strong>sigma</strong> – Matrix-like array; the gaussian’s covariance matrix
@@ -376,7 +380,7 @@ in and the proposal remains in a valid state.</p>
 <dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.LocalDensity" title="pypmc.density.base.LocalDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalDensity</span></code></a></p>
 <p>A multivariate local Gaussian density with redefinable covariance.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>sigma</strong> – Matrix-like array; covariance-matrix.</p>
 </dd>
 </dl>
@@ -386,7 +390,7 @@ in and the proposal remains in a valid state.</p>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code> given <code class="docutils literal notranslate"><span class="pre">y</span></code>,
 namely log(q(x|y)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – Vector-like array; the proposed point</p></li>
 <li><p><strong>y</strong> – Vector-like array; the current point</p></li>
@@ -403,7 +407,7 @@ namely log(q(x|y)).</p>
 <dd><p>Propose a new point given <code class="docutils literal notranslate"><span class="pre">y</span></code> using the random number
 generator <code class="docutils literal notranslate"><span class="pre">rng</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>y</strong> – Vector-like array; the current position</p></li>
 <li><p><strong>rng</strong> – <p>State of a random number generator like numpy.random.mtrand</p>
@@ -425,7 +429,7 @@ generator <code class="docutils literal notranslate"><span class="pre">rng</span
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.gauss.LocalGauss.update" title="Permalink to this definition"></a></dt>
 <dd><p>Re-initialize the proposal with a new covariance matrix.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>sigma</strong> – Matrix-like array; the new covariance-matrix.</p>
 </dd>
 </dl>
@@ -448,7 +452,7 @@ and the proposal remains in a valid state.</p>
 <dd><p>Bases: <a class="reference internal" href="#pypmc.density.gauss.LocalGauss" title="pypmc.density.gauss.LocalGauss"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalGauss</span></code></a></p>
 <p>A multivariate local Student’s t density with redefinable covariance.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sigma</strong> – Matrix-like array; the covariance-matrix</p></li>
 <li><p><strong>dof</strong> – Float; the degrees of freedom</p></li>
@@ -460,7 +464,7 @@ and the proposal remains in a valid state.</p>
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.student_t.LocalStudentT.evaluate" title="Permalink to this definition"></a></dt>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code>, namely log(q(x)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> – Vector-like array; the proposed point.</p>
 </dd>
 </dl>
@@ -473,7 +477,7 @@ and the proposal remains in a valid state.</p>
 <span class="sig-name descname"><span class="pre">propose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">numpy.random.mtrand</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
 <dd><p>Propose N points using the random number generator <code class="docutils literal notranslate"><span class="pre">rng</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Integer; the number of random points to be proposed</p></li>
 <li><p><strong>rng</strong> – <p>State of a random number generator like <code class="docutils literal notranslate"><span class="pre">numpy.random.mtrand</span></code></p>
@@ -503,7 +507,7 @@ distribution</p></li>
 <p>A Student’s t probability density. Can be used as a component in
 MixtureDensities.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mu</strong> – Vector-like array; the gaussian’s mean <span class="math notranslate nohighlight">\(\mu\)</span></p></li>
 <li><p><strong>sigma</strong> – Matrix-like array; the gaussian’s covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span></p></li>
@@ -516,7 +520,7 @@ MixtureDensities.</p>
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.student_t.StudentT.evaluate" title="Permalink to this definition"></a></dt>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code>, namely log(q(x)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> – Vector-like array; the proposed point.</p>
 </dd>
 </dl>
@@ -528,7 +532,7 @@ MixtureDensities.</p>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code>, namely log(q(x))
 for each row in x.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – Matrix-like array; the proposed points. Expect i-th accessible
 as <code class="docutils literal notranslate"><span class="pre">x[i]</span></code>.</p></li>
@@ -546,7 +550,7 @@ the output is written into this array.</p></li>
 <span class="sig-name descname"><span class="pre">propose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">numpy.random.mtrand</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
 <dd><p>Propose N points using the random number generator <code class="docutils literal notranslate"><span class="pre">rng</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Integer; the number of random points to be proposed</p></li>
 <li><p><strong>rng</strong> – <p>State of a random number generator like <code class="docutils literal notranslate"><span class="pre">numpy.random.mtrand</span></code></p>
@@ -567,7 +571,7 @@ the output is written into this array.</p></li>
 <dd><p>Re-initialize the density with new mean, covariance matrix and
 degrees of freedom.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mu</strong> – Vector-like array; the gaussian’s mean <span class="math notranslate nohighlight">\(\mu\)</span></p></li>
 <li><p><strong>sigma</strong> – Matrix-like array; the gaussian’s covariance matrix
@@ -595,7 +599,7 @@ are plugged in and the proposal remains in a valid state.</p>
 <dd><p>Bases: <a class="reference internal" href="#pypmc.density.base.ProbabilityDensity" title="pypmc.density.base.ProbabilityDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProbabilityDensity</span></code></a></p>
 <p>Base class for mixture probability densities.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>components</strong> – Iterable of ProbabilityDensities; the mixture’s components</p></li>
 <li><p><strong>weights</strong> – Iterable of floats; the weights of the components
@@ -608,7 +612,7 @@ are plugged in and the proposal remains in a valid state.</p>
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.mixture.MixtureDensity.evaluate" title="Permalink to this definition"></a></dt>
 <dd><p>Evaluate log of the density to propose <code class="docutils literal notranslate"><span class="pre">x</span></code>, namely log(q(x)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – Vector-like array; the proposed point.</p></li>
 <li><p><strong>individual</strong> – bool; If true, return the evaluation of each component at <code class="docutils literal notranslate"><span class="pre">x</span></code> as
@@ -632,7 +636,7 @@ Return log(q(x)) for each point (if <code class="docutils literal notranslate"><
 <p>Use <code class="docutils literal notranslate"><span class="pre">individual</span></code> if you need the density at <code class="docutils literal notranslate"><span class="pre">x</span></code> for each component
 and you want to compute it only once to increase efficiency.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – (N x D) array; one D-dim. sample per row.</p></li>
 <li><p><strong>out</strong> – (N) array, optional; write output into this array (if
@@ -662,7 +666,7 @@ components only.</p></li>
 <span class="sig-name descname"><span class="pre">propose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">_np.random.mtrand</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.density.mixture.MixtureDensity.propose" title="Permalink to this definition"></a></dt>
 <dd><p>Propose N points using the random number generator <code class="docutils literal notranslate"><span class="pre">rng</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Integer; the number of random points to be proposed</p></li>
 <li><p><strong>rng</strong> – State of a random number generator like numpy.random.mtrand</p></li>
@@ -700,7 +704,7 @@ that <code class="docutils literal notranslate"><span class="pre">self.normalize
 Return list of removed components and weights in the form:
 [(index, component, weight), …].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>threshold</strong> – Float; components with lower weight are deleted</p>
 </dd>
 </dl>
@@ -719,7 +723,7 @@ components. The output can be used for the clustering algorithms.</p>
 <a class="reference internal" href="#pypmc.density.mixture.recover_t_mixture" title="pypmc.density.mixture.recover_t_mixture"><code class="xref py py-func docutils literal notranslate"><span class="pre">recover_t_mixture</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>means</strong> – Vector-like array; the means of the Gaussian mixture</p></li>
 <li><p><strong>covs</strong> – 3d-matrix-like array; the covariances of the Gaussian mixture.
@@ -748,7 +752,7 @@ clustering algorithms.</p>
 <a class="reference internal" href="#pypmc.density.mixture.recover_gaussian_mixture" title="pypmc.density.mixture.recover_gaussian_mixture"><code class="xref py py-func docutils literal notranslate"><span class="pre">recover_gaussian_mixture</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>means</strong> – Vector-like array; the means of the mixture</p></li>
 <li><p><strong>covs</strong> – 3d-matrix-like array; the covariances of the mixture. <code class="docutils literal notranslate"><span class="pre">cov[i]</span></code>
@@ -777,7 +781,7 @@ provided all components will get equal weight.</p>
 <a class="reference internal" href="#pypmc.density.mixture.recover_t_mixture" title="pypmc.density.mixture.recover_t_mixture"><code class="xref py py-func docutils literal notranslate"><span class="pre">recover_t_mixture</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mixture</strong> – <a class="reference internal" href="#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a> with Gaussian (<a class="reference internal" href="#pypmc.density.gauss.Gauss" title="pypmc.density.gauss.Gauss"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gauss</span></code></a>)
 components; the mixture to be decomposed.</p>
 </dd>
@@ -795,7 +799,7 @@ weights from a <a class="reference internal" href="#pypmc.density.mixture.Mixtur
 <a class="reference internal" href="#pypmc.density.mixture.recover_gaussian_mixture" title="pypmc.density.mixture.recover_gaussian_mixture"><code class="xref py py-func docutils literal notranslate"><span class="pre">recover_gaussian_mixture</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mixture</strong> – <a class="reference internal" href="#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a> with Student t (<a class="reference internal" href="#pypmc.density.student_t.StudentT" title="pypmc.density.student_t.StudentT"><code class="xref py py-class docutils literal notranslate"><span class="pre">StudentT</span></code></a>)
 components; the mixture to be decomposed.</p>
 </dd>
@@ -815,7 +819,7 @@ components; the mixture to be decomposed.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.sampler.markov_chain.</span></span><span class="sig-name descname"><span class="pre">MarkovChain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">numpy.random.mtrand</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/sampler/markov_chain.html#MarkovChain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.sampler.markov_chain.MarkovChain" title="Permalink to this definition"></a></dt>
 <dd><p>A Markov chain to generate samples from the target density.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>target</strong> – The target density. Must be a function accepting a 1d numpy
 array and returning a float, namely <span class="math notranslate nohighlight">\(\log(P(x))\)</span>,
@@ -874,7 +878,7 @@ in [0,1) when calling <strong>rng.rand()</strong></p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.sampler.markov_chain.</span></span><span class="sig-name descname"><span class="pre">AdaptiveMarkovChain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">numpy.random.mtrand</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/sampler/markov_chain.html#AdaptiveMarkovChain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.sampler.markov_chain.AdaptiveMarkovChain" title="Permalink to this definition"></a></dt>
 <dd><p>A Markov chain with proposal covariance adaptation as in <a class="reference internal" href="references.html#hst01" id="id1"><span>[HST01]</span></a> to generate samples from the target density.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>target</strong> – The target density. Must be a function accepting a 1d numpy
 array and returning a float, namely <span class="math notranslate nohighlight">\(\log(P(x))\)</span>,
@@ -939,7 +943,7 @@ in [0,1) when calling <strong>rng.rand()</strong></p>
 <dd><p>Calculates the covariance matrix of weighted samples (like the output of an
 importance-sampling run).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>samples</strong> – Matrix-like numpy array; the samples to be used.</p></li>
 <li><p><strong>weights</strong> – Vector-like numpy array; the (unnormalized) importance weights.</p></li>
@@ -959,7 +963,7 @@ weight, the following is returned:</p>
 \[\sum_{n=1}^{N} w_n f(x_n)
 \mathrm{\ \ where\ \ } \sum_{n=1}^{N}w_n \overset{!}{=} 1\]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>samples</strong> – Matrix-like numpy array; the samples to be used.</p></li>
 <li><p><strong>weights</strong> – Vector-like numpy array; the (unnormalized) importance weights.</p></li>
@@ -975,7 +979,7 @@ weight, the following is returned:</p>
 <dd><p>Calculate the mean of weighted samples (like the output of an
 importance-sampling run).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>samples</strong> – Matrix-like numpy array; the samples to be used.</p></li>
 <li><p><strong>weights</strong> – Vector-like numpy array; the (unnormalized) importance weights.</p></li>
@@ -994,7 +998,7 @@ density but different proposals.</p>
 <p>Return the weights as a <a class="reference internal" href="#pypmc.tools.History" title="pypmc.tools.History"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.tools.History</span></code></a> such that the
 weights for each proposal are easily accessible.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>samples</strong> – Iterable of matrix-like arrays; the weighted samples whose importance
 weights shall be combined. One sample per row in each array, one array
@@ -1017,7 +1021,7 @@ drawn.</p></li>
 <dd><p>An importance sampler, generates weighted samples from
 <code class="docutils literal notranslate"><span class="pre">target</span></code> using <code class="docutils literal notranslate"><span class="pre">proposal</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>target</strong> – The target density. Must be a function accepting a 1d numpy
 array and returning a float, namely <span class="math notranslate nohighlight">\(\log(P(x))\)</span>,
@@ -1079,7 +1083,7 @@ alternating between a <em>regroup</em> and a <em>refit</em> step, and requires
 an <code class="docutils literal notranslate"><span class="pre">initial_guess</span></code> of the output density that defines the
 maximum number of components to use.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_components</strong> – <a class="reference internal" href="#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.mixture.MixtureDensity</span></code></a> with Gaussian
 (<a class="reference internal" href="#pypmc.density.gauss.Gauss" title="pypmc.density.gauss.Gauss"><code class="xref py py-class docutils literal notranslate"><span class="pre">pypmc.density.gauss.Gauss</span></code></a>) components; the Gaussian
@@ -1101,7 +1105,7 @@ for the EM algorithm.</p></li>
 guess. The result is available in the member <code class="docutils literal notranslate"><span class="pre">self.g</span></code>.</p>
 <p>Return the number of iterations at convergence, or None.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>eps</strong> – <p>If relative change of distance between current and last step falls below <code class="docutils literal notranslate"><span class="pre">eps</span></code>,
 declare convergence:</p>
@@ -1150,7 +1154,7 @@ mode of the variational posterior using <a class="reference internal" href="#pyp
 <p>Another implementation can be found at <a class="reference external" href="https://github.com/jamesmcinerney/vbmm">https://github.com/jamesmcinerney/vbmm</a>.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> – Matrix like array; Each of the <span class="math notranslate nohighlight">\(N\)</span> rows contains one
 <span class="math notranslate nohighlight">\(D\)</span>-dimensional sample from the probability density to be
@@ -1226,11 +1230,11 @@ parameters as dict.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pypmc.mix_adapt.variational.GaussianInference.prune">
-<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.mix_adapt.variational.GaussianInference.prune" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.mix_adapt.variational.GaussianInference.prune" title="Permalink to this definition"></a></dt>
 <dd><p>Delete components with an effective number of samples
 <span class="math notranslate nohighlight">\(N_k\)</span> below the threshold.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>threshold</strong> – Float; the minimum effective number of samples a component must have
 to survive.</p>
 </dd>
@@ -1239,7 +1243,7 @@ to survive.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pypmc.mix_adapt.variational.GaussianInference.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rel_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abs_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.mix_adapt.variational.GaussianInference.run" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rel_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abs_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.mix_adapt.variational.GaussianInference.run" title="Permalink to this definition"></a></dt>
 <dd><p>Run variational-Bayes parameter updates and check for convergence
 using the change of the log likelihood bound of the current and the last
 step. Convergence is not declared if the number of components changed,
@@ -1248,7 +1252,7 @@ increase, but for modifications, this useful property may not hold for
 all parameter values.</p>
 <p>Return the number of iterations at convergence, or None.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>iterations</strong> – Maximum number of updates.</p></li>
 <li><p><strong>prune</strong> – Call <a class="reference internal" href="#pypmc.mix_adapt.variational.GaussianInference.prune" title="pypmc.mix_adapt.variational.GaussianInference.prune"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prune</span></code></a> after each update; i.e., remove components
@@ -1305,7 +1309,7 @@ q(\boldsymbol{\mu}|\boldsymbol{\Lambda}) q(\boldsymbol{\Lambda}) =
 <p>This function may delete results obtained by <a class="reference internal" href="#pypmc.mix_adapt.variational.GaussianInference.update" title="pypmc.mix_adapt.variational.GaussianInference.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update</span></code></a>.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>alpha</strong> (<em>alpha0</em><em>,</em>) – <p>Float or <span class="math notranslate nohighlight">\(K\)</span> vector; parameter of the mixing
 coefficients’ probability distribution (prior:
@@ -1391,7 +1395,7 @@ components, updates, and removes those components with vanishing weight
 using  <code class="docutils literal notranslate"><span class="pre">prune()</span></code>. All the methods the typical user wants to call are taken
 over from and documented in <a class="reference internal" href="#pypmc.mix_adapt.variational.GaussianInference" title="pypmc.mix_adapt.variational.GaussianInference"><code class="xref py py-class docutils literal notranslate"><span class="pre">GaussianInference</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_mixture</strong> – MixtureDensity with Gauss components, the input to be compressed.</p></li>
 <li><p><strong>N</strong> – The number of (virtual) input samples that the <code class="docutils literal notranslate"><span class="pre">input_mixture</span></code> is
@@ -1432,7 +1436,7 @@ the maximum possible and the parameter <code class="docutils literal notranslate
 <dd><p>Compute first part of a Wishart distribution’s normalization,
 (B.79) of <a class="reference internal" href="references.html#bis06" id="id11"><span>[Bis06]</span></a>, on the log scale.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>D</strong> – Dimension of parameter vector; i.e. <code class="docutils literal notranslate"><span class="pre">W</span></code> is a DxD matrix.</p></li>
 <li><p><strong>nu</strong> – Degrees of freedom of a Wishart distribution.</p></li>
@@ -1455,7 +1459,7 @@ algorithm according to Cap+08]_, <a class="reference internal" href="references.
 out that running multiple PMC updates using the same samples is often
 useful.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>samples</strong> – <p>Matrix-like array; the samples to be used for the PMC run.</p>
 <div class="admonition warning">
@@ -1514,14 +1518,14 @@ equation (5) in <a class="reference internal" href="references.html#cap-08" id="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pypmc.mix_adapt.pmc.PMC.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rel_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abs_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.mix_adapt.pmc.PMC.run" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rel_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abs_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypmc.mix_adapt.pmc.PMC.run" title="Permalink to this definition"></a></dt>
 <dd><p>Run PMC updates and check for convergence using the change of the
 log likelihood of the current and the last step. Convergence is not
 declared if the likelihood decreased or if components are removed.</p>
 <p>Return the number of iterations at convergence, or None.</p>
 <p>The output density can be accessed via <code class="docutils literal notranslate"><span class="pre">self.density</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>iterations</strong> – Maximum number of updates.</p></li>
 <li><p><strong>prune</strong> – Call <a class="reference internal" href="#pypmc.density.mixture.MixtureDensity.prune" title="pypmc.density.mixture.MixtureDensity.prune"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixtureDensity.prune</span></code></a> after each update; i.e.,
@@ -1552,7 +1556,7 @@ convergence if</p>
 <dd><p>Adapt a Gaussian mixture <code class="docutils literal notranslate"><span class="pre">density</span></code> using the (M-)PMC algorithm
 according to <a class="reference internal" href="references.html#cap-08" id="id15"><span>[Cap+08]</span></a> and <a class="reference internal" href="references.html#kil-09" id="id16"><span>[Kil+09]</span></a> and return the updated density.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>samples</strong> – Matrix-like array; the samples to be used for the PMC run.</p></li>
 <li><p><strong>density</strong> – <a class="reference internal" href="#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a> with <a class="reference internal" href="#pypmc.density.gauss.Gauss" title="pypmc.density.gauss.Gauss"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gauss</span></code></a> components;
@@ -1596,7 +1600,7 @@ Otherwise, <code class="docutils literal notranslate"><span class="pre">density<
 <dd><p>Adapt a Student t mixture <code class="docutils literal notranslate"><span class="pre">density</span></code> using the (M-)PMC algorithm
 according to <a class="reference internal" href="references.html#cap-08" id="id17"><span>[Cap+08]</span></a>, <a class="reference internal" href="references.html#kil-09" id="id18"><span>[Kil+09]</span></a>, and <a class="reference internal" href="references.html#hod12" id="id19"><span>[HOD12]</span></a> and return the updated density.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>samples</strong> – Matrix-like array; the samples to be used for the PMC run.</p></li>
 <li><p><strong>density</strong> – <a class="reference internal" href="#pypmc.density.mixture.MixtureDensity" title="pypmc.density.mixture.MixtureDensity"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixtureDensity</span></code></a> with <code class="xref py py-class docutils literal notranslate"><span class="pre">StundentT</span></code> components;
@@ -1670,7 +1674,7 @@ with its empirical mean and covariance is created.</p>
 <p><a class="reference internal" href="#pypmc.mix_adapt.r_value.make_r_tmix" title="pypmc.mix_adapt.r_value.make_r_tmix"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_r_tmix</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> – <p>Iterable of matrix-like arrays; the individual items are interpreted
 as points from an individual chain.</p>
@@ -1692,7 +1696,7 @@ only. Default is all.</p></li>
 Reduce <code class="docutils literal notranslate"><span class="pre">K_g</span></code> or increase <code class="docutils literal notranslate"><span class="pre">len(data)</span></code>!</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>approx</strong> – Bool; If False (default), calculate the R value as in <a class="reference internal" href="references.html#gr92" id="id22"><span>[GR92]</span></a>.
 If True, neglect the uncertainty induced by the sampling process.</p>
 </dd>
@@ -1719,7 +1723,7 @@ is created.</p>
 <p><a class="reference internal" href="#pypmc.mix_adapt.r_value.make_r_gaussmix" title="pypmc.mix_adapt.r_value.make_r_gaussmix"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_r_gaussmix</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> – <p>Iterable of matrix-like arrays; the individual items are interpreted
 as points from an individual chain.</p>
@@ -1746,7 +1750,7 @@ If True, neglect the uncertainty induced by the sampling process.</p></li>
 <dd><p>Group <code class="docutils literal notranslate"><span class="pre">m</span></code> (Markov) chains whose common <a class="reference internal" href="#pypmc.mix_adapt.r_value.r_value" title="pypmc.mix_adapt.r_value.r_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">r_value</span></code></a> is
 less than <code class="docutils literal notranslate"><span class="pre">critical_r</span></code> in each of the D dimensions.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>means</strong> – (m x D) Matrix-like array; the mean value estimates.</p></li>
 <li><p><strong>variances</strong> – (m x D) Matrix-like array; the variance estimates.</p></li>
@@ -1774,7 +1778,7 @@ of the parameter.</p>
 <p>The R value is defined only in <em>one</em> dimension.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>means</strong> – Vector-like array; the sample mean of each chain.</p></li>
 <li><p><strong>variances</strong> – Vector-like array; the sample variance of each chain.</p></li>
@@ -1809,7 +1813,7 @@ terrible and <span class="math notranslate nohighlight">\(ESS=1\)</span> is perf
 <div class="math notranslate nohighlight">
 \[\bar{\omega}_i = \frac{\omega_i}{\sum_i \omega_i}\]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>weights</strong> – Vector-like array; the samples’ weights</p>
 </dd>
 </dl>
@@ -1829,7 +1833,7 @@ terrible and <span class="math notranslate nohighlight">\(\mathcal{P}=1\)</span>
 <div class="math notranslate nohighlight">
 \[\bar{\omega}_i = \frac{\omega_i}{\sum_i \omega_i}\]</div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>weights</strong> – Vector-like array; the samples’ weights</p>
 </dd>
 </dl>
@@ -1845,7 +1849,7 @@ terrible and <span class="math notranslate nohighlight">\(\mathcal{P}=1\)</span>
 <p>Save a history of 1d-arrays.
 Each call to <a class="reference internal" href="#pypmc.tools.History.append" title="pypmc.tools.History.append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append</span></code></a> is counted as a new “run”.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dim</strong> – Integer; the length of 1d-arrays to be saved.</p></li>
 <li><p><strong>prealloc</strong> – Integer; indicates for how many points memory is allocated in advance.
@@ -1893,7 +1897,7 @@ the latest run.</p>
 <dd><p>Allocate memory for a new run and return a reference to that memory
 wrapped in an array of size <code class="docutils literal notranslate"><span class="pre">(new_points_len,</span> <span class="pre">self.dim)</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>new_points_len</strong> – Integer; the number of points to be stored in the target memory.</p>
 </dd>
 </dl>
@@ -1916,7 +1920,7 @@ wrapped in an array of size <code class="docutils literal notranslate"><span cla
 <span class="sig-prename descclassname"><span class="pre">pypmc.tools.indicator.</span></span><span class="sig-name descname"><span class="pre">ball</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bdy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/tools/indicator/_indicator_factory.html#ball"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.tools.indicator.ball" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the indicator function of a ball.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>center</strong> – <p>A vector-like numpy array, defining the center of the ball.</p>
 <p>len(center) fixes the dimension.</p>
@@ -1935,7 +1939,7 @@ wrapped in an array of size <code class="docutils literal notranslate"><span cla
 <span class="sig-prename descclassname"><span class="pre">pypmc.tools.indicator.</span></span><span class="sig-name descname"><span class="pre">hyperrectangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bdy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/tools/indicator/_indicator_factory.html#hyperrectangle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.tools.indicator.hyperrectangle" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the indicator function of a hyperrectangle.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lower</strong> – <p>Vector-like numpy array, defining the lower boundary of the hyperrectangle.</p>
 <p>len(lower) fixes the dimension.</p>
@@ -1960,7 +1964,7 @@ wrapped in an array of size <code class="docutils literal notranslate"><span cla
 </dl>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">function</span></code> is not called if indicator evaluates to False.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function</strong> – The function to be called when indicator returns True.</p></li>
 <li><p><strong>indicator</strong> – Bool-returning function; the indicator</p></li>
@@ -1979,7 +1983,7 @@ wrapped in an array of size <code class="docutils literal notranslate"><span cla
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypmc.tools.parallel_sampler.</span></span><span class="sig-name descname"><span class="pre">MPISampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">MPI.COMM_WORLD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpi_tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pypmc/tools/parallel_sampler.html#MPISampler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypmc.tools.parallel_sampler.MPISampler" title="Permalink to this definition"></a></dt>
 <dd><p>An MPI4Py parallelized sampler. Parallelizes any <a class="reference internal" href="#module-pypmc.sampler" title="pypmc.sampler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pypmc.sampler</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sampler_type</strong> – A class defined in <a class="reference internal" href="#module-pypmc.sampler" title="pypmc.sampler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pypmc.sampler</span></code></a>; the class of the
 sampler to be run in parallel. Example: <code class="docutils literal notranslate"><span class="pre">sampler_type=ImportanceSampler</span></code>.</p></li>
@@ -2010,7 +2014,7 @@ division; i.e., perform the minimal lexicographic integer partition.</p>
 length <code class="docutils literal notranslate"><span class="pre">L</span></code>. Return a Gaussian mixture where each component gets
 the empirical mean and covariance of one patch.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> – Matrix-like array; the points to be patched. Expect <code class="docutils literal notranslate"><span class="pre">data[i]</span></code>
 as the d-dimensional i-th point.</p></li>
@@ -2037,7 +2041,7 @@ If <code class="docutils literal notranslate"><span class="pre">False</span></co
 <dd><p>Plot the (Gaussian) components of the <code class="docutils literal notranslate"><span class="pre">mixture</span></code> density as
 one-sigma ellipses in the <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code> plane.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>center_style</strong> – If a non-empty <code class="docutils literal notranslate"><span class="pre">dict</span></code>, plot mean value with the style passed to <code class="docutils literal notranslate"><span class="pre">scatter</span></code>.</p></li>
 <li><p><strong>cmap</strong> – The color map to which components are mapped in order to
@@ -2063,7 +2067,7 @@ make a scatter plot of each data point with the color of the
 component it is most likely from. The <code class="docutils literal notranslate"><span class="pre">responsibility</span></code> is
 normalized internally such that each row sums to unity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> – matrix-like; one row = one 2D sample</p></li>
 <li><p><strong>responsibility</strong> – matrix-like; one row = probabilities that sample n is from

@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pypmc.tools._plot &mdash; pypmc 1.2 documentation</title>
+  <title>pypmc.tools._plot &mdash; pypmc 1.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/plot_directive.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -26,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> pypmc
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pypmc
           </a>
               <div class="version">
-                1.2
+                1.2.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,7 +65,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
       <li class="breadcrumb-item active">pypmc.tools._plot</li>
       <li class="wy-breadcrumbs-aside">
@@ -78,7 +82,7 @@
 <div class="viewcode-block" id="plot_mixture"><a class="viewcode-back" href="../../../api.html#pypmc.tools.plot_mixture">[docs]</a><span class="k">def</span> <span class="nf">plot_mixture</span><span class="p">(</span><span class="n">mixture</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center_style</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mf">0.15</span><span class="p">),</span>
                  <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;nipy_spectral&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">ellipse_style</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">),</span>
                  <span class="n">solid_edge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">visualize_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Plot the (Gaussian) components of the ``mixture`` density as</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Plot the (Gaussian) components of the ``mixture`` density as</span>
 <span class="sd">    one-sigma ellipses in the ``(i,j)`` plane.</span>
 
 <span class="sd">    :param center_style:</span>
@@ -204,7 +208,7 @@
 
 <div class="viewcode-block" id="plot_responsibility"><a class="viewcode-back" href="../../../api.html#pypmc.tools.plot_responsibility">[docs]</a><span class="k">def</span> <span class="nf">plot_responsibility</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">responsibility</span><span class="p">,</span>
                         <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;nipy_spectral&#39;</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Classify the 2D ``data`` according to the ``responsibility`` and</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Classify the 2D ``data`` according to the ``responsibility`` and</span>
 <span class="sd">    make a scatter plot of each data point with the color of the</span>
 <span class="sd">    component it is most likely from. The ``responsibility`` is</span>
 <span class="sd">    normalized internally such that each row sums to unity.</span>
